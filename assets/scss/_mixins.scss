@@ -1,0 +1,34 @@
+@mixin nova-breakpoint-up($name) {
+    @if map-has-key($nova-breakpoints, $name) {
+        @media (min-width: #{map-get($nova-breakpoints, $name)}) {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint `#{$name}` does not exist.";
+    }
+}
+
+// Пример использования: @include nova-flex-center;
+@mixin nova-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Для плавных переходов
+@mixin nova-transition($properties...) {
+    transition: $properties 0.3s ease-in-out;
+}
+
+// Для теней
+@mixin nova-shadow($level: md) {
+    @if ($level == sm) {
+        box-shadow: $nova-box-shadow-sm;
+    } @else if ($level == md) {
+        box-shadow: $nova-box-shadow-md;
+    } @else if ($level == lg) {
+        box-shadow: $nova-box-shadow-lg;
+    } @else {
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,63 @@
+@use "sass:color";
+
+// --- Базовые сбросы ---
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// --- Тело страницы ---
+body {
+  font-family: var(--nova-font-family-base, #{$nova-font-family-base});
+  font-size: var(--nova-font-size-base, #{$nova-font-size-base});
+  line-height: 1.6;
+  color: var(--nova-text-color);
+  background-color: var(--nova-bg-color);
+  @include nova-transition(background-color, color);
+}
+
+// --- Ссылки ---
+a {
+  color: var(--nova-primary);
+  text-decoration: none;
+  @include nova-transition(color);
+
+  &:hover {
+    /* заменяем darken() на color-mix(), чтобы не падал Sass */
+    color: color-mix(in srgb, var(--nova-primary) 85%, black);
+    text-decoration: underline;
+  }
+}
+
+// --- Изображения ---
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// --- Контейнер ---
+.nova-container {
+  max-width: $nova-breakpoint-xl;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $nova-spacer-md;
+  padding-right: $nova-spacer-md;
+}
+
+// --- Секции ---
+.nova-section {
+  padding: $nova-spacer-xl 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--nova-border-color);
+  }
+}
+
+// --- Основной контент ---
+.nova-main {
+  padding-top: 70px; // Чтобы контент не перекрывался фиксированной шапкой
+}

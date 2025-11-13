@@ -1,0 +1,186 @@
+/* ========================================================================== */
+/* Настройки страницы конструктора NovaUI */
+/* ========================================================================== */
+
+/* --- Основной контейнер --- */
+.nova-main {
+    padding: 2rem 1rem;
+    background-color: var(--nova-color-bg-light);
+}
+
+/* --- Sidebar --- */
+.nova-customize-sidebar {
+    background-color: var(--nova-color-bg-surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.nova-customize-sidebar h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--nova-color-heading);
+    border-bottom: 2px solid var(--nova-color-primary-light);
+    padding-bottom: 0.5rem;
+}
+
+/* --- Группы настроек --- */
+.nova-customize-group {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--nova-border-color-light);
+}
+
+.nova-customize-group__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--nova-color-text-primary);
+}
+
+/* --- Панели настроек --- */
+.component-settings {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.component-settings.active {
+    display: block;
+    opacity: 1;
+}
+
+/* --- Формы --- */
+.nova-form-group {
+    margin-bottom: 1rem;
+}
+
+.nova-form-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    color: var(--nova-color-text-secondary);
+}
+
+.nova-form-control {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--nova-border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.nova-form-control:focus {
+    border-color: var(--nova-color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--nova-primary-rgb),0.15);
+    outline: none;
+}
+
+textarea.nova-form-control {
+    resize: vertical;
+}
+
+.nova-form-checkbox {
+    margin-right: 0.5rem;
+}
+
+/* --- Preview --- */
+#component-preview {
+    background-color: var(--nova-color-bg-alt);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+#component-preview h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--nova-color-heading);
+    border-bottom: 2px dashed var(--nova-border-color-light);
+    padding-bottom: 0.5rem;
+}
+
+/* --- Кнопки в preview --- */
+#button-preview-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#button-preview-area button {
+    transition: all 0.2s ease;
+}
+
+#button-preview-area button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- Карточки в preview --- */
+#card-preview-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#card-preview-area .nova-card {
+    transition: all 0.3s ease;
+}
+
+#card-preview-area .nova-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* --- Code Playground --- */
+.nova-playground {
+    background-color: var(--nova-color-bg-dark);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.nova-playground__code {
+    font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+    font-size: 0.9rem;
+    color: var(--nova-color-text-inverse);
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.nova-copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    background-color: var(--nova-color-primary);
+    color: var(--nova-light);
+    transition: all 0.2s ease;
+}
+
+.nova-copy-btn:hover {
+    background-color: var(--nova-color-primary-dark);
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 992px) {
+    .nova-main {
+        padding: 1rem;
+    }
+    .nova-customize-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+}

@@ -1,0 +1,162 @@
+.nova-header {
+    background-color: var(--nova-header-bg);
+    padding: $nova-spacer-md 0;
+    border-bottom: 1px solid var(--nova-border-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    @include nova-transition(background-color, border-color);
+
+    .nova-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__brand {
+        font-size: 1.8rem;
+        font-weight: bold;
+
+        a {
+            color: var(--nova-text-color);
+            text-decoration: none;
+
+            &:hover {
+                color: var(--nova-primary);
+            }
+        }
+    }
+
+    &__nav {
+        display: block; // По умолчанию скрыто на мобильных
+
+        .nova-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+
+            &__item {
+                &:not(:last-child) {
+                    margin-right: $nova-spacer-lg;
+                }
+                a {
+                    color: var(--nova-text-color);
+                    text-decoration: none;
+                    font-weight: 500;
+                    padding: $nova-spacer-xs 0;
+                    position: relative;
+
+                    &:hover {
+                        color: var(--nova-primary);
+                        &::after {
+                            transform: scaleX(1);
+                        }
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: -5px;
+                        width: 100%;
+                        height: 2px;
+                        background-color: var(--nova-primary);
+                        transform: scaleX(0);
+                        @include nova-transition(transform);
+                    }
+                }
+            }
+        }
+    }
+
+    // Бургер-меню
+    .nova-burger-menu {
+        display: none; // Скрыто по умолчанию на десктопе
+        width: 30px;
+        height: 20px;
+        position: relative;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1100; // Выше, чем навигация
+
+        span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--nova-text-color);
+            position: absolute;
+            left: 0;
+            @include nova-transition(all 0.3s ease);
+
+            &:nth-child(1) { top: 0; }
+            &:nth-child(2) { top: 9px; }
+            &:nth-child(3) { top: 18px; }
+        }
+
+        &.active {
+            span {
+                &:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+                &:nth-child(2) { opacity: 0; }
+                &:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+            }
+        }
+    }
+
+    // Переключатель темы
+    .nova-theme-switcher {
+        margin-left: $nova-spacer-md;
+    }
+
+    // Мобильная версия (когда бургер-меню активно)
+    &.nova-header--open {
+        .nova-header__nav {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--nova-header-bg);
+            border-top: 1px solid var(--nova-border-color);
+            box-shadow: $nova-box-shadow-sm;
+            padding: $nova-spacer-md;
+
+            .nova-menu {
+                flex-direction: column;
+
+                &__item {
+                    margin-right: 0;
+                    margin-bottom: $nova-spacer-sm;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    a {
+                        padding: $nova-spacer-sm $nova-spacer-md;
+                        display: block;
+                        border-radius: $nova-border-radius;
+                        &:hover {
+                             background-color: rgba(var(--nova-primary-rgb), 0.1);
+                        }
+                         &::after {
+                            display: none; // Убрать подчеркивание
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: $nova-breakpoint-md) {
+        .nova-header__nav {
+            display: none; // Скрыть навигацию по умолчанию на мобильных
+        }
+        .nova-burger-menu {
+            display: block; // Показать бургер-меню
+        }
+    }
+}

@@ -1,0 +1,1697 @@
+@charset "UTF-8";
+:root {
+  --nova-primary: #6c63ff;
+  --nova-secondary: #00bcd4;
+  --nova-success: #28a745;
+  --nova-danger: #dc3545;
+  --nova-warning: #ffc107;
+  --nova-info: #17a2b8;
+  --nova-light: #f8f9fa;
+  --nova-dark: #343a40;
+  --nova-text-color: #343a40;
+  --nova-bg-color: #ffffff;
+  --nova-card-bg: #ffffff;
+  --nova-border-color: rgba(0, 0, 0, 0.1);
+  --nova-header-bg: #ffffff;
+  --nova-footer-bg: var(--nova-dark);
+  --nova-footer-text-color: #f8f9fa;
+  --nova-font-family: Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+  --nova-font-size-base: 1rem;
+  --nova-primary-rgb: 108, 99, 255;
+}
+
+.nova-theme--dark {
+  --nova-primary: #6c63ff;
+  --nova-secondary: #00bcd4;
+  --nova-success: #28a745;
+  --nova-danger: #dc3545;
+  --nova-warning: #ffc107;
+  --nova-info: #17a2b8;
+  --nova-light: #f8f9fa;
+  --nova-dark: #343a40;
+  --nova-text-color: #f8f9fa;
+  --nova-bg-color: #212529;
+  --nova-card-bg: #111;
+  --nova-border-color: rgba(255, 255, 255, 0.1);
+  --nova-header-bg: #111;
+  --nova-footer-bg: var(--nova-dark);
+  --nova-footer-text-color: #f8f9fa;
+  --nova-primary-rgb: 108, 99, 255;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--nova-font-family-base, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif);
+  font-size: var(--nova-font-size-base, 1rem);
+  line-height: 1.6;
+  color: var(--nova-text-color);
+  background-color: var(--nova-bg-color);
+  transition: background-color, color 0.3s ease-in-out;
+}
+
+a {
+  color: var(--nova-primary);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+a:hover {
+  /* заменяем darken() на color-mix(), чтобы не падал Sass */
+  color: color-mix(in srgb, var(--nova-primary) 85%, black);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.nova-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.nova-section {
+  padding: 64px 0;
+}
+.nova-section:not(:last-child) {
+  border-bottom: 1px solid var(--nova-border-color);
+}
+
+.nova-main {
+  padding-top: 70px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  color: var(--nova-text-color);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+.nova-text--lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.nova-text--muted {
+  color: var(--nova-text-color, #343a40);
+  opacity: 0.7;
+}
+
+.nova-text--small {
+  font-size: 0.875rem;
+}
+
+.nova-text--large {
+  font-size: 1.125rem;
+}
+
+.nova-text--center {
+  text-align: center;
+}
+
+.nova-text--right {
+  text-align: right;
+}
+
+.nova-text--left {
+  text-align: left;
+}
+
+.nova-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+.nova-grid--gap-sm {
+  margin-left: -4px;
+  margin-right: -4px;
+}
+.nova-grid--gap-sm .nova-col {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.nova-grid--gap-md {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+.nova-grid--gap-md .nova-col {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.nova-grid--gap-lg {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+.nova-grid--gap-lg .nova-col {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.nova-grid--no-gap {
+  margin-left: 0;
+  margin-right: 0;
+}
+.nova-grid--no-gap .nova-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nova-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.nova-col-1 {
+  flex: 0 0 calc(8.3333333333% * 1);
+  max-width: calc(8.3333333333% * 1);
+}
+
+.nova-col-2 {
+  flex: 0 0 calc(8.3333333333% * 2);
+  max-width: calc(8.3333333333% * 2);
+}
+
+.nova-col-3 {
+  flex: 0 0 calc(8.3333333333% * 3);
+  max-width: calc(8.3333333333% * 3);
+}
+
+.nova-col-4 {
+  flex: 0 0 calc(8.3333333333% * 4);
+  max-width: calc(8.3333333333% * 4);
+}
+
+.nova-col-5 {
+  flex: 0 0 calc(8.3333333333% * 5);
+  max-width: calc(8.3333333333% * 5);
+}
+
+.nova-col-6 {
+  flex: 0 0 calc(8.3333333333% * 6);
+  max-width: calc(8.3333333333% * 6);
+}
+
+.nova-col-7 {
+  flex: 0 0 calc(8.3333333333% * 7);
+  max-width: calc(8.3333333333% * 7);
+}
+
+.nova-col-8 {
+  flex: 0 0 calc(8.3333333333% * 8);
+  max-width: calc(8.3333333333% * 8);
+}
+
+.nova-col-9 {
+  flex: 0 0 calc(8.3333333333% * 9);
+  max-width: calc(8.3333333333% * 9);
+}
+
+.nova-col-10 {
+  flex: 0 0 calc(8.3333333333% * 10);
+  max-width: calc(8.3333333333% * 10);
+}
+
+.nova-col-11 {
+  flex: 0 0 calc(8.3333333333% * 11);
+  max-width: calc(8.3333333333% * 11);
+}
+
+.nova-col-12 {
+  flex: 0 0 calc(8.3333333333% * 12);
+  max-width: calc(8.3333333333% * 12);
+}
+
+@media (min-width: 576px) {
+  .nova-col-sm-1 {
+    flex: 0 0 calc(8.3333333333% * 1);
+    max-width: calc(8.3333333333% * 1);
+  }
+  .nova-col-sm-2 {
+    flex: 0 0 calc(8.3333333333% * 2);
+    max-width: calc(8.3333333333% * 2);
+  }
+  .nova-col-sm-3 {
+    flex: 0 0 calc(8.3333333333% * 3);
+    max-width: calc(8.3333333333% * 3);
+  }
+  .nova-col-sm-4 {
+    flex: 0 0 calc(8.3333333333% * 4);
+    max-width: calc(8.3333333333% * 4);
+  }
+  .nova-col-sm-5 {
+    flex: 0 0 calc(8.3333333333% * 5);
+    max-width: calc(8.3333333333% * 5);
+  }
+  .nova-col-sm-6 {
+    flex: 0 0 calc(8.3333333333% * 6);
+    max-width: calc(8.3333333333% * 6);
+  }
+  .nova-col-sm-7 {
+    flex: 0 0 calc(8.3333333333% * 7);
+    max-width: calc(8.3333333333% * 7);
+  }
+  .nova-col-sm-8 {
+    flex: 0 0 calc(8.3333333333% * 8);
+    max-width: calc(8.3333333333% * 8);
+  }
+  .nova-col-sm-9 {
+    flex: 0 0 calc(8.3333333333% * 9);
+    max-width: calc(8.3333333333% * 9);
+  }
+  .nova-col-sm-10 {
+    flex: 0 0 calc(8.3333333333% * 10);
+    max-width: calc(8.3333333333% * 10);
+  }
+  .nova-col-sm-11 {
+    flex: 0 0 calc(8.3333333333% * 11);
+    max-width: calc(8.3333333333% * 11);
+  }
+  .nova-col-sm-12 {
+    flex: 0 0 calc(8.3333333333% * 12);
+    max-width: calc(8.3333333333% * 12);
+  }
+}
+@media (min-width: 768px) {
+  .nova-col-md-1 {
+    flex: 0 0 calc(8.3333333333% * 1);
+    max-width: calc(8.3333333333% * 1);
+  }
+  .nova-col-md-2 {
+    flex: 0 0 calc(8.3333333333% * 2);
+    max-width: calc(8.3333333333% * 2);
+  }
+  .nova-col-md-3 {
+    flex: 0 0 calc(8.3333333333% * 3);
+    max-width: calc(8.3333333333% * 3);
+  }
+  .nova-col-md-4 {
+    flex: 0 0 calc(8.3333333333% * 4);
+    max-width: calc(8.3333333333% * 4);
+  }
+  .nova-col-md-5 {
+    flex: 0 0 calc(8.3333333333% * 5);
+    max-width: calc(8.3333333333% * 5);
+  }
+  .nova-col-md-6 {
+    flex: 0 0 calc(8.3333333333% * 6);
+    max-width: calc(8.3333333333% * 6);
+  }
+  .nova-col-md-7 {
+    flex: 0 0 calc(8.3333333333% * 7);
+    max-width: calc(8.3333333333% * 7);
+  }
+  .nova-col-md-8 {
+    flex: 0 0 calc(8.3333333333% * 8);
+    max-width: calc(8.3333333333% * 8);
+  }
+  .nova-col-md-9 {
+    flex: 0 0 calc(8.3333333333% * 9);
+    max-width: calc(8.3333333333% * 9);
+  }
+  .nova-col-md-10 {
+    flex: 0 0 calc(8.3333333333% * 10);
+    max-width: calc(8.3333333333% * 10);
+  }
+  .nova-col-md-11 {
+    flex: 0 0 calc(8.3333333333% * 11);
+    max-width: calc(8.3333333333% * 11);
+  }
+  .nova-col-md-12 {
+    flex: 0 0 calc(8.3333333333% * 12);
+    max-width: calc(8.3333333333% * 12);
+  }
+}
+@media (min-width: 992px) {
+  .nova-col-lg-1 {
+    flex: 0 0 calc(8.3333333333% * 1);
+    max-width: calc(8.3333333333% * 1);
+  }
+  .nova-col-lg-2 {
+    flex: 0 0 calc(8.3333333333% * 2);
+    max-width: calc(8.3333333333% * 2);
+  }
+  .nova-col-lg-3 {
+    flex: 0 0 calc(8.3333333333% * 3);
+    max-width: calc(8.3333333333% * 3);
+  }
+  .nova-col-lg-4 {
+    flex: 0 0 calc(8.3333333333% * 4);
+    max-width: calc(8.3333333333% * 4);
+  }
+  .nova-col-lg-5 {
+    flex: 0 0 calc(8.3333333333% * 5);
+    max-width: calc(8.3333333333% * 5);
+  }
+  .nova-col-lg-6 {
+    flex: 0 0 calc(8.3333333333% * 6);
+    max-width: calc(8.3333333333% * 6);
+  }
+  .nova-col-lg-7 {
+    flex: 0 0 calc(8.3333333333% * 7);
+    max-width: calc(8.3333333333% * 7);
+  }
+  .nova-col-lg-8 {
+    flex: 0 0 calc(8.3333333333% * 8);
+    max-width: calc(8.3333333333% * 8);
+  }
+  .nova-col-lg-9 {
+    flex: 0 0 calc(8.3333333333% * 9);
+    max-width: calc(8.3333333333% * 9);
+  }
+  .nova-col-lg-10 {
+    flex: 0 0 calc(8.3333333333% * 10);
+    max-width: calc(8.3333333333% * 10);
+  }
+  .nova-col-lg-11 {
+    flex: 0 0 calc(8.3333333333% * 11);
+    max-width: calc(8.3333333333% * 11);
+  }
+  .nova-col-lg-12 {
+    flex: 0 0 calc(8.3333333333% * 12);
+    max-width: calc(8.3333333333% * 12);
+  }
+}
+@media (min-width: 1200px) {
+  .nova-col-xl-1 {
+    flex: 0 0 calc(8.3333333333% * 1);
+    max-width: calc(8.3333333333% * 1);
+  }
+  .nova-col-xl-2 {
+    flex: 0 0 calc(8.3333333333% * 2);
+    max-width: calc(8.3333333333% * 2);
+  }
+  .nova-col-xl-3 {
+    flex: 0 0 calc(8.3333333333% * 3);
+    max-width: calc(8.3333333333% * 3);
+  }
+  .nova-col-xl-4 {
+    flex: 0 0 calc(8.3333333333% * 4);
+    max-width: calc(8.3333333333% * 4);
+  }
+  .nova-col-xl-5 {
+    flex: 0 0 calc(8.3333333333% * 5);
+    max-width: calc(8.3333333333% * 5);
+  }
+  .nova-col-xl-6 {
+    flex: 0 0 calc(8.3333333333% * 6);
+    max-width: calc(8.3333333333% * 6);
+  }
+  .nova-col-xl-7 {
+    flex: 0 0 calc(8.3333333333% * 7);
+    max-width: calc(8.3333333333% * 7);
+  }
+  .nova-col-xl-8 {
+    flex: 0 0 calc(8.3333333333% * 8);
+    max-width: calc(8.3333333333% * 8);
+  }
+  .nova-col-xl-9 {
+    flex: 0 0 calc(8.3333333333% * 9);
+    max-width: calc(8.3333333333% * 9);
+  }
+  .nova-col-xl-10 {
+    flex: 0 0 calc(8.3333333333% * 10);
+    max-width: calc(8.3333333333% * 10);
+  }
+  .nova-col-xl-11 {
+    flex: 0 0 calc(8.3333333333% * 11);
+    max-width: calc(8.3333333333% * 11);
+  }
+  .nova-col-xl-12 {
+    flex: 0 0 calc(8.3333333333% * 12);
+    max-width: calc(8.3333333333% * 12);
+  }
+}
+.nova-grid--align-top {
+  align-items: flex-start;
+}
+
+.nova-grid--align-middle {
+  align-items: center;
+}
+
+.nova-grid--align-bottom {
+  align-items: flex-end;
+}
+
+.nova-grid--justify-start {
+  justify-content: flex-start;
+}
+
+.nova-grid--justify-center {
+  justify-content: center;
+}
+
+.nova-grid--justify-end {
+  justify-content: flex-end;
+}
+
+.nova-grid--justify-between {
+  justify-content: space-between;
+}
+
+.nova-grid--justify-around {
+  justify-content: space-around;
+}
+
+.nova-col--auto {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.nova-col--equal-width {
+  flex: 1;
+  min-width: 0;
+}
+
+.nova-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: color, background-color, border-color, box-shadow 0.3s ease-in-out;
+}
+.nova-btn:hover {
+  text-decoration: none;
+}
+.nova-btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(var(--nova-primary-rgb), 0.25);
+}
+.nova-btn--disabled, .nova-btn:disabled {
+  opacity: 0.65;
+  pointer-events: none;
+}
+.nova-btn--sm {
+  padding: 4px 8px;
+  font-size: 0.875rem;
+}
+.nova-btn--lg {
+  padding: 16px 64px;
+  font-size: 1.25rem;
+}
+.nova-btn--primary {
+  color: var(--nova-light);
+  background-color: var(--nova-primary, #6c63ff);
+  border-color: var(--nova-primary, #6c63ff);
+}
+.nova-btn--primary:hover {
+  background-color: color-mix(in srgb, var(--nova-primary, #6c63ff) 85%, black);
+  border-color: color-mix(in srgb, var(--nova-primary, #6c63ff) 85%, black);
+}
+.nova-btn--primary:active {
+  background-color: color-mix(in srgb, var(--nova-primary, #6c63ff) 70%, black);
+  border-color: color-mix(in srgb, var(--nova-primary, #6c63ff) 70%, black);
+}
+.nova-btn--outline-primary {
+  color: var(--nova-primary, #6c63ff);
+  border-color: var(--nova-primary, #6c63ff);
+  background-color: transparent;
+}
+.nova-btn--outline-primary:hover {
+  color: var(--nova-light);
+  background-color: var(--nova-primary, #6c63ff);
+  border-color: var(--nova-primary, #6c63ff);
+}
+.nova-btn--ghost-primary {
+  color: var(--nova-primary, #6c63ff);
+  border: none;
+  background-color: transparent;
+}
+.nova-btn--ghost-primary:hover {
+  color: color-mix(in srgb, var(--nova-primary, #6c63ff) 90%, black);
+  background-color: color-mix(in srgb, var(--nova-primary, #6c63ff) 10%, white);
+}
+.nova-btn--secondary {
+  color: var(--nova-light);
+  background-color: var(--nova-secondary, #00bcd4);
+  border-color: var(--nova-secondary, #00bcd4);
+}
+.nova-btn--secondary:hover {
+  background-color: color-mix(in srgb, var(--nova-secondary, #00bcd4) 85%, black);
+  border-color: color-mix(in srgb, var(--nova-secondary, #00bcd4) 85%, black);
+}
+.nova-btn--secondary:active {
+  background-color: color-mix(in srgb, var(--nova-secondary, #00bcd4) 70%, black);
+  border-color: color-mix(in srgb, var(--nova-secondary, #00bcd4) 70%, black);
+}
+.nova-btn--outline-secondary {
+  color: var(--nova-secondary, #00bcd4);
+  border-color: var(--nova-secondary, #00bcd4);
+  background-color: transparent;
+}
+.nova-btn--outline-secondary:hover {
+  color: var(--nova-light);
+  background-color: var(--nova-secondary, #00bcd4);
+  border-color: var(--nova-secondary, #00bcd4);
+}
+.nova-btn--ghost-secondary {
+  color: var(--nova-secondary, #00bcd4);
+  border: none;
+  background-color: transparent;
+}
+.nova-btn--ghost-secondary:hover {
+  color: color-mix(in srgb, var(--nova-secondary, #00bcd4) 90%, black);
+  background-color: color-mix(in srgb, var(--nova-secondary, #00bcd4) 10%, white);
+}
+.nova-btn--success {
+  color: var(--nova-light);
+  background-color: var(--nova-success, #28a745);
+  border-color: var(--nova-success, #28a745);
+}
+.nova-btn--success:hover {
+  background-color: color-mix(in srgb, var(--nova-success, #28a745) 85%, black);
+  border-color: color-mix(in srgb, var(--nova-success, #28a745) 85%, black);
+}
+.nova-btn--success:active {
+  background-color: color-mix(in srgb, var(--nova-success, #28a745) 70%, black);
+  border-color: color-mix(in srgb, var(--nova-success, #28a745) 70%, black);
+}
+.nova-btn--outline-success {
+  color: var(--nova-success, #28a745);
+  border-color: var(--nova-success, #28a745);
+  background-color: transparent;
+}
+.nova-btn--outline-success:hover {
+  color: var(--nova-light);
+  background-color: var(--nova-success, #28a745);
+  border-color: var(--nova-success, #28a745);
+}
+.nova-btn--ghost-success {
+  color: var(--nova-success, #28a745);
+  border: none;
+  background-color: transparent;
+}
+.nova-btn--ghost-success:hover {
+  color: color-mix(in srgb, var(--nova-success, #28a745) 90%, black);
+  background-color: color-mix(in srgb, var(--nova-success, #28a745) 10%, white);
+}
+.nova-btn--danger {
+  color: var(--nova-light);
+  background-color: var(--nova-danger, #dc3545);
+  border-color: var(--nova-danger, #dc3545);
+}
+.nova-btn--danger:hover {
+  background-color: color-mix(in srgb, var(--nova-danger, #dc3545) 85%, black);
+  border-color: color-mix(in srgb, var(--nova-danger, #dc3545) 85%, black);
+}
+.nova-btn--danger:active {
+  background-color: color-mix(in srgb, var(--nova-danger, #dc3545) 70%, black);
+  border-color: color-mix(in srgb, var(--nova-danger, #dc3545) 70%, black);
+}
+.nova-btn--outline-danger {
+  color: var(--nova-danger, #dc3545);
+  border-color: var(--nova-danger, #dc3545);
+  background-color: transparent;
+}
+.nova-btn--outline-danger:hover {
+  color: var(--nova-light);
+  background-color: var(--nova-danger, #dc3545);
+  border-color: var(--nova-danger, #dc3545);
+}
+.nova-btn--ghost-danger {
+  color: var(--nova-danger, #dc3545);
+  border: none;
+  background-color: transparent;
+}
+.nova-btn--ghost-danger:hover {
+  color: color-mix(in srgb, var(--nova-danger, #dc3545) 90%, black);
+  background-color: color-mix(in srgb, var(--nova-danger, #dc3545) 10%, white);
+}
+.nova-btn--warning {
+  color: var(--nova-light);
+  background-color: var(--nova-warning, #ffc107);
+  border-color: var(--nova-warning, #ffc107);
+}
+.nova-btn--warning:hover {
+  background-color: color-mix(in srgb, var(--nova-warning, #ffc107) 85%, black);
+  border-color: color-mix(in srgb, var(--nova-warning, #ffc107) 85%, black);
+}
+.nova-btn--warning:active {
+  background-color: color-mix(in srgb, var(--nova-warning, #ffc107) 70%, black);
+  border-color: color-mix(in srgb, var(--nova-warning, #ffc107) 70%, black);
+}
+.nova-btn--outline-warning {
+  color: var(--nova-warning, #ffc107);
+  border-color: var(--nova-warning, #ffc107);
+  background-color: transparent;
+}
+.nova-btn--outline-warning:hover {
+  color: var(--nova-light);
+  background-color: var(--nova-warning, #ffc107);
+  border-color: var(--nova-warning, #ffc107);
+}
+.nova-btn--ghost-warning {
+  color: var(--nova-warning, #ffc107);
+  border: none;
+  background-color: transparent;
+}
+.nova-btn--ghost-warning:hover {
+  color: color-mix(in srgb, var(--nova-warning, #ffc107) 90%, black);
+  background-color: color-mix(in srgb, var(--nova-warning, #ffc107) 10%, white);
+}
+.nova-btn--info {
+  color: var(--nova-light);
+  background-color: var(--nova-info, #17a2b8);
+  border-color: var(--nova-info, #17a2b8);
+}
+.nova-btn--info:hover {
+  background-color: color-mix(in srgb, var(--nova-info, #17a2b8) 85%, black);
+  border-color: color-mix(in srgb, var(--nova-info, #17a2b8) 85%, black);
+}
+.nova-btn--info:active {
+  background-color: color-mix(in srgb, var(--nova-info, #17a2b8) 70%, black);
+  border-color: color-mix(in srgb, var(--nova-info, #17a2b8) 70%, black);
+}
+.nova-btn--outline-info {
+  color: var(--nova-info, #17a2b8);
+  border-color: var(--nova-info, #17a2b8);
+  background-color: transparent;
+}
+.nova-btn--outline-info:hover {
+  color: var(--nova-light);
+  background-color: var(--nova-info, #17a2b8);
+  border-color: var(--nova-info, #17a2b8);
+}
+.nova-btn--ghost-info {
+  color: var(--nova-info, #17a2b8);
+  border: none;
+  background-color: transparent;
+}
+.nova-btn--ghost-info:hover {
+  color: color-mix(in srgb, var(--nova-info, #17a2b8) 90%, black);
+  background-color: color-mix(in srgb, var(--nova-info, #17a2b8) 10%, white);
+}
+.nova-btn--light {
+  color: var(--nova-dark);
+  background-color: var(--nova-light, #f8f9fa);
+  border-color: var(--nova-light, #f8f9fa);
+}
+.nova-btn--light:hover {
+  background-color: color-mix(in srgb, var(--nova-light, #f8f9fa) 85%, black);
+  border-color: color-mix(in srgb, var(--nova-light, #f8f9fa) 85%, black);
+}
+.nova-btn--light:active {
+  background-color: color-mix(in srgb, var(--nova-light, #f8f9fa) 70%, black);
+  border-color: color-mix(in srgb, var(--nova-light, #f8f9fa) 70%, black);
+}
+.nova-btn--outline-light {
+  color: var(--nova-light, #f8f9fa);
+  border-color: var(--nova-light, #f8f9fa);
+  background-color: transparent;
+}
+.nova-btn--outline-light:hover {
+  color: var(--nova-dark);
+  background-color: var(--nova-light, #f8f9fa);
+  border-color: var(--nova-light, #f8f9fa);
+}
+.nova-btn--ghost-light {
+  color: var(--nova-light, #f8f9fa);
+  border: none;
+  background-color: transparent;
+}
+.nova-btn--ghost-light:hover {
+  color: color-mix(in srgb, var(--nova-light, #f8f9fa) 90%, black);
+  background-color: color-mix(in srgb, var(--nova-light, #f8f9fa) 10%, white);
+}
+.nova-btn--dark {
+  color: var(--nova-light);
+  background-color: var(--nova-dark, #343a40);
+  border-color: var(--nova-dark, #343a40);
+}
+.nova-btn--dark:hover {
+  background-color: color-mix(in srgb, var(--nova-dark, #343a40) 85%, black);
+  border-color: color-mix(in srgb, var(--nova-dark, #343a40) 85%, black);
+}
+.nova-btn--dark:active {
+  background-color: color-mix(in srgb, var(--nova-dark, #343a40) 70%, black);
+  border-color: color-mix(in srgb, var(--nova-dark, #343a40) 70%, black);
+}
+.nova-btn--outline-dark {
+  color: var(--nova-dark, #343a40);
+  border-color: var(--nova-dark, #343a40);
+  background-color: transparent;
+}
+.nova-btn--outline-dark:hover {
+  color: var(--nova-light);
+  background-color: var(--nova-dark, #343a40);
+  border-color: var(--nova-dark, #343a40);
+}
+.nova-btn--ghost-dark {
+  color: var(--nova-dark, #343a40);
+  border: none;
+  background-color: transparent;
+}
+.nova-btn--ghost-dark:hover {
+  color: color-mix(in srgb, var(--nova-dark, #343a40) 90%, black);
+  background-color: color-mix(in srgb, var(--nova-dark, #343a40) 10%, white);
+}
+.nova-btn--rounded {
+  border-radius: 50px;
+}
+.nova-btn--pill {
+  border-radius: 9999px;
+}
+.nova-btn--square {
+  border-radius: 0;
+}
+.nova-btn--icon {
+  padding: 8px;
+  width: calc(1rem * 1.5 + 8px * 2);
+  height: calc(1rem * 1.5 + 8px * 2);
+}
+.nova-btn--icon .fas,
+.nova-btn--icon .fab {
+  font-size: 1.2em;
+}
+.nova-btn--icon.nova-btn--sm {
+  width: calc(1rem * 1.2 + 4px * 2);
+  height: calc(1rem * 1.2 + 4px * 2);
+  padding: 4px;
+}
+.nova-btn--block {
+  display: flex;
+  width: 100%;
+}
+.nova-btn .fas,
+.nova-btn .fab {
+  margin-right: 4px;
+}
+.nova-btn .fas:last-child,
+.nova-btn .fab:last-child {
+  margin-right: 0;
+  margin-left: 4px;
+}
+.nova-btn .fas:first-child:last-child,
+.nova-btn .fab:first-child:last-child {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.nova-btn-group {
+  display: inline-flex;
+  vertical-align: middle;
+}
+.nova-btn-group .nova-btn {
+  border-radius: 0;
+}
+.nova-btn-group .nova-btn:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.nova-btn-group .nova-btn:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.nova-btn-group .nova-btn:not(:last-child) {
+  border-right: 0;
+}
+.nova-btn-group .nova-btn:not(:first-child) {
+  margin-left: -1px;
+}
+
+.nova-header {
+  background-color: var(--nova-header-bg);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--nova-border-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: background-color, border-color 0.3s ease-in-out;
+}
+.nova-header .nova-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nova-header__brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.nova-header__brand a {
+  color: var(--nova-text-color);
+  text-decoration: none;
+}
+.nova-header__brand a:hover {
+  color: var(--nova-primary);
+}
+.nova-header__nav {
+  display: block;
+}
+.nova-header__nav .nova-menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.nova-header__nav .nova-menu__item:not(:last-child) {
+  margin-right: 32px;
+}
+.nova-header__nav .nova-menu__item a {
+  color: var(--nova-text-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 4px 0;
+  position: relative;
+}
+.nova-header__nav .nova-menu__item a:hover {
+  color: var(--nova-primary);
+}
+.nova-header__nav .nova-menu__item a:hover::after {
+  transform: scaleX(1);
+}
+.nova-header__nav .nova-menu__item a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--nova-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+.nova-header .nova-burger-menu {
+  display: none;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+.nova-header .nova-burger-menu span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--nova-text-color);
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease 0.3s ease-in-out;
+}
+.nova-header .nova-burger-menu span:nth-child(1) {
+  top: 0;
+}
+.nova-header .nova-burger-menu span:nth-child(2) {
+  top: 9px;
+}
+.nova-header .nova-burger-menu span:nth-child(3) {
+  top: 18px;
+}
+.nova-header .nova-burger-menu.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.nova-header .nova-burger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.nova-header .nova-burger-menu.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+.nova-header .nova-theme-switcher {
+  margin-left: 16px;
+}
+.nova-header.nova-header--open .nova-header__nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--nova-header-bg);
+  border-top: 1px solid var(--nova-border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 16px;
+}
+.nova-header.nova-header--open .nova-header__nav .nova-menu {
+  flex-direction: column;
+}
+.nova-header.nova-header--open .nova-header__nav .nova-menu__item {
+  margin-right: 0;
+  margin-bottom: 8px;
+}
+.nova-header.nova-header--open .nova-header__nav .nova-menu__item:last-child {
+  margin-bottom: 0;
+}
+.nova-header.nova-header--open .nova-header__nav .nova-menu__item a {
+  padding: 8px 16px;
+  display: block;
+  border-radius: 6px;
+}
+.nova-header.nova-header--open .nova-header__nav .nova-menu__item a:hover {
+  background-color: rgba(var(--nova-primary-rgb), 0.1);
+}
+.nova-header.nova-header--open .nova-header__nav .nova-menu__item a::after {
+  display: none;
+}
+@media (max-width: 768px) {
+  .nova-header .nova-header__nav {
+    display: none;
+  }
+  .nova-header .nova-burger-menu {
+    display: block;
+  }
+}
+
+.nova-footer {
+  background-color: var(--nova-footer-bg);
+  color: var(--nova-footer-text-color);
+  padding: 64px 0 16px;
+  margin-top: 64px;
+}
+.nova-footer .nova-container {
+  display: flex;
+  flex-direction: column;
+}
+.nova-footer__heading {
+  color: var(--nova-footer-text-color);
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(var(--nova-footer-text-color), 0.2);
+  padding-bottom: 8px;
+}
+.nova-footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nova-footer__list li {
+  margin-bottom: 4px;
+}
+.nova-footer__list li a {
+  color: var(--nova-footer-text-color);
+  text-decoration: none;
+}
+.nova-footer__list li a:hover {
+  color: var(--nova-primary);
+  text-decoration: underline;
+}
+.nova-footer .nova-social-links {
+  display: flex;
+  margin-top: 16px;
+}
+.nova-footer .nova-social-links__item {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(var(--nova-footer-text-color), 0.1);
+  color: var(--nova-footer-text-color);
+  font-size: 1.2rem;
+  margin-right: 8px;
+  transition: background-color, color 0.3s ease-in-out;
+}
+.nova-footer .nova-social-links__item:hover {
+  background-color: var(--nova-primary);
+  color: var(--nova-light);
+}
+.nova-footer__bottom {
+  border-top: 1px solid rgba(var(--nova-footer-text-color), 0.1);
+  padding-top: 16px;
+  margin-top: 64px;
+  text-align: center;
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+@media (max-width: 768px) {
+  .nova-footer {
+    text-align: center;
+  }
+  .nova-footer .nova-col-12 {
+    margin-bottom: 32px;
+  }
+  .nova-footer .nova-col-12:last-child {
+    margin-bottom: 0;
+  }
+  .nova-footer .nova-social-links {
+    justify-content: center;
+  }
+  .nova-footer .nova-footer__list li {
+    display: inline-block;
+  }
+  .nova-footer .nova-footer__list li:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.nova-card {
+  background-color: var(--nova-card-bg);
+  border-radius: 6px;
+  border: 1px solid var(--nova-border-color);
+  overflow: hidden;
+  transition: background-color, border-color, box-shadow 0.3s ease-in-out;
+}
+.nova-card--elevated {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.nova-card--elevated:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.nova-card--outline {
+  border: 2px solid var(--nova-primary);
+}
+.nova-card--flat {
+  border: none;
+  background-color: transparent;
+  border-radius: 0;
+}
+.nova-card__image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.nova-card__content {
+  padding: 16px;
+}
+.nova-card__header {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+.nova-card__meta {
+  font-size: 0.875rem;
+  color: var(--nova-text-color);
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+.nova-card__actions {
+  padding: 8px 16px;
+  border-top: 1px solid var(--nova-border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.nova-card__actions .nova-btn {
+  margin-bottom: 0;
+}
+
+.nova-hero {
+  position: relative;
+  padding: 64px 0;
+  text-align: center;
+  overflow: hidden;
+}
+.nova-hero--sm {
+  padding: 32px 0;
+}
+.nova-hero--md {
+  padding: 64px 0;
+}
+.nova-hero--lg {
+  padding: 96px 0;
+}
+.nova-hero--fullscreen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 64px 0;
+}
+.nova-hero--primary-bg {
+  background-color: var(--nova-primary);
+  color: var(--nova-light);
+}
+.nova-hero--dark-bg {
+  background-color: var(--nova-dark);
+  color: var(--nova-light);
+}
+.nova-hero--light-bg {
+  background-color: var(--nova-light);
+  color: var(--nova-dark);
+}
+.nova-hero__title {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  color: inherit;
+}
+@media (max-width: 768px) {
+  .nova-hero__title {
+    font-size: 2.2rem;
+  }
+}
+.nova-hero__subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: inherit;
+}
+@media (max-width: 768px) {
+  .nova-hero__subtitle {
+    font-size: 1.1rem;
+  }
+}
+.nova-hero__actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+.nova-hero__actions .nova-btn {
+  margin: 0;
+}
+.nova-hero--align-left {
+  text-align: left;
+}
+.nova-hero--align-center {
+  text-align: center;
+}
+.nova-hero--align-right {
+  text-align: right;
+}
+.nova-hero--bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.nova-sidebar {
+  padding-top: 35px;
+  padding-bottom: 16px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+@media (max-width: 768px) {
+  .nova-sidebar {
+    border-bottom: 1px solid var(--nova-border-color);
+    margin-bottom: 32px;
+    position: static;
+  }
+}
+
+.nova-docs-nav__heading {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--nova-text-color);
+  opacity: 0.8;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+.nova-docs-nav .nova-menu--vertical {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
+}
+.nova-docs-nav .nova-menu--vertical .nova-menu__item {
+  margin-bottom: 4px;
+}
+.nova-docs-nav .nova-menu--vertical .nova-menu__item a {
+  display: block;
+  padding: 4px 8px;
+  color: var(--nova-text-color);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.nova-docs-nav .nova-menu--vertical .nova-menu__item a:hover {
+  background-color: rgba(var(--nova-primary), 0.1);
+  color: var(--nova-primary);
+}
+.nova-docs-nav .nova-menu--vertical .nova-menu__item a.active {
+  background-color: var(--nova-primary);
+  color: var(--nova-light);
+  font-weight: 500;
+}
+
+.nova-docs-content h1, .nova-docs-content h2, .nova-docs-content h3, .nova-docs-content h4, .nova-docs-content h5, .nova-docs-content h6 {
+  margin-top: 64px;
+  padding-top: 16px;
+}
+.nova-docs-content ul, .nova-docs-content ol {
+  margin-left: 32px;
+  margin-bottom: 16px;
+}
+.nova-docs-content ul li, .nova-docs-content ol li {
+  margin-bottom: 2px;
+}
+
+.nova-docs-content pre {
+  background-color: var(--nova-dark);
+  color: var(--nova-light);
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-top: 20px; 
+  margin-bottom: 20px;
+}
+
+.nova-docs-content pre code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+
+/* ========================================================================== */
+/* Настройки страницы конструктора NovaUI */
+/* ========================================================================== */
+/* --- Основной контейнер --- */
+.nova-main {
+  padding: 2rem 1rem;
+  background-color: var(--nova-color-bg-light);
+}
+
+/* --- Sidebar --- */
+.nova-customize-sidebar {
+  background-color: var(--nova-color-bg-surface);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 2rem;
+  transition: all 0.3s ease;
+}
+
+.nova-customize-sidebar h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--nova-color-heading);
+  border-bottom: 2px solid var(--nova-color-primary-light);
+  padding-bottom: 0.5rem;
+}
+
+/* --- Группы настроек --- */
+.nova-customize-group {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--nova-border-color-light);
+}
+
+.nova-customize-group__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--nova-color-text-primary);
+}
+
+/* --- Панели настроек --- */
+.component-settings {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.component-settings.active {
+  display: block;
+  opacity: 1;
+}
+
+/* --- Формы --- */
+.nova-form-group {
+  margin-bottom: 1rem;
+}
+
+.nova-form-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: var(--nova-color-text-secondary);
+}
+
+.nova-form-control {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--nova-border-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.nova-form-control:focus {
+  border-color: var(--nova-color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--nova-primary-rgb), 0.15);
+  outline: none;
+}
+
+textarea.nova-form-control {
+  resize: vertical;
+}
+
+.nova-form-checkbox {
+  margin-right: 0.5rem;
+}
+
+/* --- Preview --- */
+#component-preview {
+  background-color: var(--nova-color-bg-alt);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+#component-preview h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--nova-color-heading);
+  border-bottom: 2px dashed var(--nova-border-color-light);
+  padding-bottom: 0.5rem;
+}
+
+/* --- Кнопки в preview --- */
+#button-preview-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#button-preview-area button {
+  transition: all 0.2s ease;
+}
+
+#button-preview-area button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Карточки в preview --- */
+#card-preview-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#card-preview-area .nova-card {
+  transition: all 0.3s ease;
+}
+
+#card-preview-area .nova-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Code Playground --- */
+.nova-playground {
+  background-color: var(--nova-color-bg-dark);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.nova-playground__code {
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+  font-size: 0.9rem;
+  color: var(--nova-color-text-inverse);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.nova-copy-btn {
+    display: block; /* блок, чтобы был под кодом */
+    margin-top: 0.5rem; /* отступ сверху */
+    background-color: var(--nova-primary); /* заметный цвет */
+    color: var(--nova-light);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: var(--nova-border-radius);
+    transition: background-color 0.2s ease;
+}
+
+.nova-copy-btn:hover {
+    background-color: darken(var(--nova-primary), 10%);
+}
+
+
+/* --- Адаптивность --- */
+@media (max-width: 992px) {
+  .nova-main {
+    padding: 1rem;
+  }
+  .nova-customize-sidebar {
+    position: static;
+    margin-bottom: 2rem;
+  }
+}
+:root {
+  --nova-primary: #6C63FF;
+  --nova-secondary: #00bcd4;
+  --nova-success: #28a745;
+  --nova-danger: #dc3545;
+  --nova-warning: #ffc107;
+  --nova-info: #17a2b8;
+  --nova-light: #f8f9fa;
+  --nova-dark: #343a40;
+  --nova-text-color: #343a40;
+  --nova-bg-color: #ffffff;
+  --nova-card-bg: #ffffff;
+  --nova-border-color: rgba(0,0,0,0.1);
+  --nova-header-bg: #ffffff;
+  --nova-footer-bg: var(--nova-dark);
+  --nova-footer-text-color: #f8f9fa;
+  --nova-primary-rgb: 108, 99, 255;
+}
+
+.nova-theme--dark {
+  --nova-primary: #6C63FF;
+  --nova-secondary: #00bcd4;
+  --nova-success: #28a745;
+  --nova-danger: #dc3545;
+  --nova-warning: #ffc107;
+  --nova-info: #17a2b8;
+  --nova-light: #f8f9fa;
+  --nova-dark: #343a40;
+  --nova-text-color: #f8f9fa;
+  --nova-bg-color: #212529;
+  --nova-card-bg: #111;
+  --nova-border-color: rgba(255,255,255,0.1);
+  --nova-header-bg: #111;
+  --nova-footer-bg: var(--nova-dark);
+  --nova-footer-text-color: #f8f9fa;
+  --nova-primary-rgb: 108, 99, 255;
+}
+
+/*# sourceMappingURL=novaui.css.map */
+
+#magic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+#magic-grid .nova-col {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  border-radius: var(--nova-border-radius);
+  transition: transform 0.3s ease, background 0.5s ease;
+  cursor: pointer;
+}
+
+#magic-grid .nova-col:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);
+}
+#magic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+#magic-grid .nova-col {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  border-radius: var(--nova-border-radius);
+  transition: transform 0.3s ease, background 0.5s ease;
+  cursor: pointer;
+}
+
+/* Для правой колонки с кодом */
+.nova-section .nova-col-lg-6:last-child {
+    padding-left: 24px; /* отступ слева от сетки */
+}
+
+/* На мобильных экранах убираем отступ, чтобы было красиво */
+@media (max-width: 992px) {
+    .nova-section .nova-col-lg-6:last-child {
+        padding-left: 0;
+        margin-top: 16px; /* небольшой отступ сверху */
+    }
+}
+
+
+/* Accordion */
+.nova-accordion__header {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  background: var(--nova-light);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.nova-accordion__header:hover { background: var(--nova-primary-light); }
+.nova-accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  background: #fafafa;
+  padding: 0 1rem;
+  border-left: 3px solid var(--nova-primary);
+  transition: max-height 0.4s ease;
+}
+
+/* Dropdown базовый стиль */
+.nova-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nova-dropdown__menu {
+  display: none; /* скрываем по умолчанию */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+  background: var(--nova-bg-secondary, #fff);
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
+
+.nova-dropdown__menu li {
+  padding: 0;
+}
+
+.nova-dropdown__menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--nova-text-color, #333);
+  transition: background 0.2s;
+}
+
+.nova-dropdown__menu li a:hover {
+  background-color: rgba(var(--nova-primary, 0, 123, 255), 0.1);
+}
+
+/* Когда меню открыто */
+.nova-dropdown.open > .nova-dropdown__menu {
+  display: block;
+}
+
+/* Для многоуровневых подменю */
+.nova-dropdown-submenu {
+  position: relative;
+}
+
+.nova-dropdown-submenu > .nova-dropdown__menu {
+  top: 0;
+  left: 100%;
+}
+
+
+/* Общий стиль карточек */
+.nova-card {
+  background: var(--nova-bg-secondary);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+/* Слайдер карточек */
+.nova-card-slider {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+/* Только карточки внутри слайдера — с эффектом */
+.nova-card-slider .nova-card {
+  opacity: 0.5;
+  transform: scale(1);
+}
+
+.nova-card-slider .nova-card.active {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.nova-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+

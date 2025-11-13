@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация NovaUI — Build. Customize. Feel.</title>
+    <!-- Подключаем наш скомпилированный CSS -->
+    <link rel="stylesheet" href="assets/css/novaui.css">
+    <!-- Иконочный шрифт (можно использовать Font Awesome или другой) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="nova-theme--light">
+
+    <!-- Header (Шапка сайта) -->
+    <header class="nova-header">
+        <div class="nova-container">
+            <div class="nova-header__brand">
+                <a href="index.html">NovaUI</a>
+            </div>
+            <nav class="nova-header__nav">
+                <ul class="nova-menu">
+                    <li class="nova-menu__item"><a href="docs.html" class="active">Документация</a></li>
+                    <li class="nova-menu__item"><a href="customize.html">Цветовая палитра</a></li>
+                </ul>
+            </nav>
+            <button class="nova-burger-menu" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nova-theme-switcher">
+                <button id="theme-switcher-btn" class="nova-btn nova-btn--ghost nova-btn--icon" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i> <!-- Иконка солнца по умолчанию -->
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="nova-main">
+        <div class="nova-container nova-grid nova-grid--gap-lg">
+
+            <!-- Sidebar для навигации по документации -->
+            <aside class="nova-sidebar nova-col-12 nova-col-md-3">
+                <nav class="nova-docs-nav">
+                    <h4 class="nova-docs-nav__heading">Начало</h4>
+                    <ul class="nova-menu nova-menu--vertical">
+                        <li class="nova-menu__item"><a href="#introduction">Введение</a></li>
+                        <li class="nova-menu__item"><a href="#installation">Установка</a></li>
+                        <li class="nova-menu__item"><a href="#theming">Темы и переменные</a></li>
+                    </ul>
+
+                    <h4 class="nova-docs-nav__heading nova-mt-lg">Компоненты</h4>
+                    <ul class="nova-menu nova-menu--vertical">
+                        <li class="nova-menu__item"><a href="#buttons">Кнопки</a></li>
+                        <li class="nova-menu__item"><a href="#grid">Сетка</a></li>
+                        <li class="nova-menu__item"><a href="#typography">Типографика</a></li>
+                        <li class="nova-menu__item"><a href="#cards">Карточки</a></li>
+                        <li class="nova-menu__item"><a href="#header">Шапка</a></li>
+                        <li class="nova-menu__item"><a href="#accordion">Аккордеон</a></li>
+                        <li class="nova-menu__item"><a href="#dropdowns">Выпадающее меню</a></li>
+                        <li class="nova-menu__item"><a href="#hero">Hero Секции</a></li>
+                        <li class="nova-menu__item"><a href="#footer">Футер</a></li>
+                        <!-- Добавьте ссылки на другие компоненты по мере их создания -->
+                    </ul>
+
+                    <h4 class="nova-docs-nav__heading nova-mt-lg">Утилиты</h4>
+                    <ul class="nova-menu nova-menu--vertical">
+                        <li class="nova-menu__item"><a href="#spacers">Отступы</a></li>
+                        <li class="nova-menu__item"><a href="#display">Отображение</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Основной контент документации -->
+            <section class="nova-docs-content nova-col-12 nova-col-md-9">
+
+                <h1 class="nova-heading--primary" id="introduction">Введение в NovaUI</h1>
+                <p class="nova-text--lead">NovaUI — это легкий и адаптивный CSS-фреймворк, разработанный для быстрой и удобной разработки современных веб-интерфейсов. С его помощью вы можете создавать красивые и функциональные сайты, легко настраивая их внешний вид.</p>
+                <p>Мы сосредоточены на модульности, простоте использования и гибкости, предоставляя вам мощные инструменты для создания уникального пользовательского опыта.</p>
+
+                <h2 class="nova-heading--primary nova-mt-xl" id="installation">Установка NovaUI</h2>
+                <p>Для начала работы с NovaUI, выполните следующие шаги:</p>
+                <ol>
+                    <li>Клонируйте репозиторий или скачайте файлы:
+                        <pre><code class="language-bash">git clone https://github.com/your-repo/NovaUI.git</code></pre>
+                    </li>
+                    <li>Установите Sass (если еще не установлен):
+                        <pre><code class="language-bash">npm install -g sass</code></pre>
+                    </li>
+                    <li>Перейдите в директорию проекта и скомпилируйте SCSS в CSS, настроив "watcher":
+                        <pre><code class="language-bash">cd NovaUI\nova-ui
+sass --watch assets/scss/novaui.scss:assets/css/novaui.css</code></pre>
+                    </li>
+                    <li>Подключите скомпилированный CSS в ваш HTML-файл:
+                        <pre><code class="language-html">&lt;link rel="stylesheet" href="assets/css/novaui.css"&gt;</code></pre>
+                    </li>
+                </ol>
+
+                <h2 class="nova-heading--primary nova-mt-xl" id="theming">Темы и переменные</h2>
+                <p>NovaUI использует CSS-переменные для легкой кастомизации. Вы можете изменить основные цвета, шрифты, отступы и другие параметры, переопределяя эти переменные.</p>
+                <p>Например, чтобы изменить основной цвет:</p>
+                <pre><code class="language-css">:root {
+    --nova-primary: #FF5733; /* Новый основной цвет */
+}
+.nova-theme--dark {
+    --nova-primary: #C70039; /* Основной цвет для темной темы */
+}</code></pre>
+                <p>Подробнее о переменных можно найти в файле `_variables.scss`.</p>
+
+
+                <!-- Пример раздела для кнопок -->
+                <h2 class="nova-heading--primary nova-mt-xl" id="buttons">Кнопки</h2>
+                <p>Кнопки — это интерактивные элементы, которые используются для запуска действий. NovaUI предоставляет широкий спектр стилей и размеров кнопок.</p>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Базовые кнопки</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview">
+                        <button class="nova-btn nova-btn--primary">Primary</button>
+                        <button class="nova-btn nova-btn--secondary">Secondary</button>
+                        <button class="nova-btn nova-btn--success">Success</button>
+                        <button class="nova-btn nova-btn--danger">Danger</button>
+                        <button class="nova-btn nova-btn--warning">Warning</button>
+                        <button class="nova-btn nova-btn--info">Info</button>
+                        <button class="nova-btn nova-btn--light">Light</button>
+                        <button class="nova-btn nova-btn--dark">Dark</button>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;button class="nova-btn nova-btn--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--success"&gt;Success&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--danger"&gt;Danger&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--warning"&gt;Warning&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--info"&gt;Info&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--light"&gt;Light&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--dark"&gt;Dark&lt;/button&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Кнопки с обводкой (Outline)</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview">
+                        <button class="nova-btn nova-btn--outline-primary">Primary Outline</button>
+                        <button class="nova-btn nova-btn--outline-secondary">Secondary Outline</button>
+                        <button class="nova-btn nova-btn--outline-success">Success Outline</button>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;button class="nova-btn nova-btn--outline-primary"&gt;Primary Outline&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--outline-secondary"&gt;Secondary Outline&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--outline-success"&gt;Success Outline&lt;/button&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Размеры кнопок</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview">
+                        <button class="nova-btn nova-btn--primary nova-btn--sm">Small button</button>
+                        <button class="nova-btn nova-btn--success">Default button</button>
+                        <button class="nova-btn nova-btn--info nova-btn--lg">Large button</button>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;button class="nova-btn nova-btn--primary nova-btn--sm"&gt;Small button&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--success"&gt;Default button&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--info nova-btn--lg"&gt;Large button&lt;/button&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+                <h2 class="nova-heading--primary nova-mt-xl" id="grid">Сетка</h2>
+                <p>Система сетки NovaUI построена на Flexbox и позволяет легко создавать адаптивные макеты с 12-колоночной структурой.</p>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Базовая сетка</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview nova-grid nova-grid--gap-md">
+                        <div class="nova-col-12 nova-col-md-4">
+                            <div class="nova-card nova-card--flat nova-p-md nova-bg-light nova-text--center">.nova-col-12 .nova-col-md-4</div>
+                        </div>
+                        <div class="nova-col-12 nova-col-md-4">
+                            <div class="nova-card nova-card--flat nova-p-md nova-bg-light nova-text--center">.nova-col-12 .nova-col-md-4</div>
+                        </div>
+                        <div class="nova-col-12 nova-col-md-4">
+                            <div class="nova-card nova-card--flat nova-p-md nova-bg-light nova-text--center">.nova-col-12 .nova-col-md-4</div>
+                        </div>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;div class="nova-grid"&gt;
+    &lt;div class="nova-col-12 nova-col-md-4"&gt;...&lt;/div&gt;
+    &lt;div class="nova-col-12 nova-col-md-4"&gt;...&lt;/div&gt;
+    &lt;div class="nova-col-12 nova-col-md-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+                <h2 class="nova-heading--primary nova-mt-xl" id="typography">Типографика</h2>
+                <p>Стили типографики NovaUI обеспечивают чистое и читаемое представление текста, включая заголовки, параграфы и вспомогательные текстовые классы.</p>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Заголовки</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview">
+                        <h1>h1. Заголовок NovaUI</h1>
+                        <h2>h2. Заголовок NovaUI</h2>
+                        <h3>h3. Заголовок NovaUI</h3>
+                        <h4>h4. Заголовок NovaUI</h4>
+                        <h5>h5. Заголовок NovaUI</h5>
+                        <h6>h6. Заголовок NovaUI</h6>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;h1&gt;h1. Заголовок NovaUI&lt;/h1&gt;
+&lt;h2&gt;h2. Заголовок NovaUI&lt;/h2&gt;
+&lt;h3&gt;h3. Заголовок NovaUI&lt;/h3&gt;
+&lt;h4&gt;h4. Заголовок NovaUI&lt;/h4&gt;
+&lt;h5&gt;h5. Заголовок NovaUI&lt;/h5&gt;
+&lt;h6&gt;h6. Заголовок NovaUI&lt;/h6&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Вспомогательные классы текста</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview">
+                        <p class="nova-text--lead">Это ведущий параграф, который привлекает внимание.</p>
+                        <p>Обычный параграф текста.</p>
+                        <p class="nova-text--muted">Это текст с пониженной заметностью.</p>
+                        <p class="nova-text--small">Маленький текст.</p>
+                        <p class="nova-text--large">Большой текст.</p>
+                        <p class="nova-text--center">Текст по центру.</p>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;p class="nova-text--lead"&gt;Это ведущий параграф.&lt;/p&gt;
+&lt;p class="nova-text--muted"&gt;Это текст с пониженной заметностью.&lt;/p&gt;
+&lt;p class="nova-text--small"&gt;Маленький текст.&lt;/p&gt;
+&lt;p class="nova-text--large"&gt;Большой текст.&lt;/p&gt;
+&lt;p class="nova-text--center"&gt;Текст по центру.&lt;/p&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+<!-- Карточки -->
+<h2 class="nova-heading--primary nova-mt-xl" id="cards">Карточки</h2>
+<p>Карточки — это гибкие и расширяемые контейнеры для содержимого с несколькими вариантами и опциями.</p>
+
+<h3 class="nova-heading--secondary nova-mt-lg">Различные стили карточек</h3>
+<div class="nova-playground">
+  <div class="nova-playground__preview nova-grid nova-grid--gap-lg nova-grid--justify-center">
+    <div class="nova-col-12 nova-col-sm-6 nova-col-md-4">
+      <div class="nova-card nova-card--elevated">
+        <div class="nova-card__image">
+          <img src="https://via.placeholder.com/400x250/F0F2F5/8693A1?text=Image" alt="Placeholder Image">
+        </div>
+        <div class="nova-card__content">
+          <h4 class="nova-card__header">Заголовок Карточки</h4>
+          <p class="nova-card__meta">Категория | 12 ноября 2023</p>
+          <p>Краткое описание содержимого карточки.</p>
+        </div>
+        <div class="nova-card__actions">
+          <button class="nova-btn nova-btn--primary">Подробнее</button>
+        </div>
+      </div>
+    </div>
+    <div class="nova-col-12 nova-col-sm-6 nova-col-md-4">
+      <div class="nova-card nova-card--outline">
+        <div class="nova-card__content">
+          <h4 class="nova-card__header">Карточка с рамкой</h4>
+          <p class="nova-card__meta">Продукт | В наличии</p>
+          <p>Карточка с обводкой.</p>
+        </div>
+        <div class="nova-card__actions">
+          <button class="nova-btn nova-btn--secondary">Купить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pre class="nova-playground__code"><code class="language-html">&lt;div class="nova-card nova-card--elevated"&gt;...&lt;/div&gt;
+&lt;div class="nova-card nova-card--outline"&gt;...&lt;/div&gt;
+&lt;!-- nova-card--flat --&gt;</code></pre>
+  <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+</div>
+
+<!-- Слайдер карточек -->
+<h3 class="nova-heading--secondary nova-mt-lg">Слайдер карточек</h3>
+<p>Этот компонент демонстрирует динамическое переключение карточек участников с автопрокруткой.</p>
+
+<div class="nova-playground">
+  <div class="nova-playground__preview">
+    <div class="nova-card-slider">
+      <div class="nova-card nova-card--elevated active">
+        <div class="nova-card__image">
+          <img src="https://i.pravatar.cc/300?img=11" alt="User 1">
+        </div>
+        <div class="nova-card__content">
+          <h4 class="nova-card__header">Анна</h4>
+          <p class="nova-card__meta">UI Designer</p>
+          <p>Специалист по интерфейсам и пользовательскому опыту.</p>
+        </div>
+      </div>
+
+      <div class="nova-card nova-card--elevated">
+        <div class="nova-card__image">
+          <img src="https://i.pravatar.cc/300?img=32" alt="User 2">
+        </div>
+        <div class="nova-card__content">
+          <h4 class="nova-card__header">Максим</h4>
+          <p class="nova-card__meta">Frontend Developer</p>
+          <p>Разрабатывает динамичные интерфейсы и анимации.</p>
+        </div>
+      </div>
+
+      <div class="nova-card nova-card--elevated">
+        <div class="nova-card__image">
+          <img src="https://i.pravatar.cc/300?img=56" alt="User 3">
+        </div>
+        <div class="nova-card__content">
+          <h4 class="nova-card__header">Ольга</h4>
+          <p class="nova-card__meta">Project Manager</p>
+          <p>Организует процессы и следит за сроками проекта.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pre class="nova-playground__code"><code class="language-html">
+&lt;div class="nova-card-slider"&gt;
+  &lt;div class="nova-card active"&gt;
+    &lt;img src="..." alt="..."&gt;
+    &lt;h4&gt;Имя&lt;/h4&gt;
+    &lt;p&gt;Описание&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  </code></pre>
+
+  <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".nova-card-slider .nova-card");
+    let index = 0;
+    setInterval(() => {
+      cards[index].classList.remove("active");
+      index = (index + 1) % cards.length;
+      cards[index].classList.add("active");
+    }, 3500);
+  });
+</script>
+
+
+                <h2 class="nova-heading--primary nova-mt-xl" id="header">Шапка сайта</h2>
+                <p>Компонент "Шапка" (`nova-header`) обеспечивает адаптивную навигацию и брендирование для вашего сайта.</p>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Пример шапки</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview" style="position: relative; border-bottom: 1px solid var(--nova-border-color); padding-bottom: 10px;">
+                        <!-- Пример кода, аналогичный шапке из index.html, но без position: fixed для демонстрации -->
+                        <header class="nova-header" style="position: static; border-bottom: none; box-shadow: none;">
+                            <div class="nova-container" style="padding: 0;">
+                                <div class="nova-header__brand">
+                                    <a href="#header">NovaUI</a>
+                                </div>
+                                <nav class="nova-header__nav" style="display: flex;">
+                                    <ul class="nova-menu">
+                                        <li class="nova-menu__item"><a href="#">Документация</a></li>
+                                        <li class="nova-menu__item"><a href="#">Кастомизировать</a></li>
+                                    </ul>
+                                </nav>
+                                <button class="nova-burger-menu" aria-label="Toggle navigation" style="display: none;">
+                                    <span></span><span></span><span></span>
+                                </button>
+                                <div class="nova-theme-switcher" style="margin-left: auto;">
+                                    <button class="nova-btn nova-btn--ghost nova-btn--icon" aria-label="Toggle theme">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </header>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;header class="nova-header"&gt;
+    &lt;div class="nova-container"&gt;
+        &lt;div class="nova-header__brand"&gt;...&lt;/div&gt;
+        &lt;nav class="nova-header__nav"&gt;...&lt;/nav&gt;
+        &lt;button class="nova-burger-menu"&gt;...&lt;/button&gt;
+        &lt;div class="nova-theme-switcher"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+<h2 class="nova-heading--primary nova-mt-xl" id="accordion">Аккордеон</h2>
+<p>Аккордеон — компонент для скрытия и показа контента при клике на заголовок.</p>
+
+<div class="nova-playground">
+  <div class="nova-playground__preview">
+    <div class="nova-accordion">
+      <div class="nova-accordion__item">
+        <button class="nova-accordion__header">Что такое NovaUI?</button>
+        <div class="nova-accordion__content">
+          NovaUI — это легкий CSS-фреймворк для быстрой и удобной верстки.
+        </div>
+      </div>
+      <div class="nova-accordion__item">
+        <button class="nova-accordion__header">Как установить?</button>
+        <div class="nova-accordion__content">
+          Клонируйте репозиторий и подключите скомпилированный CSS.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pre class="nova-playground__code"><code class="language-html">
+&lt;div class="nova-accordion"&gt;
+  &lt;div class="nova-accordion__item"&gt;
+    &lt;button class="nova-accordion__header"&gt;Заголовок&lt;/button&gt;
+    &lt;div class="nova-accordion__content"&gt;Текст внутри&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  </code></pre>
+  <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+</div>
+
+<script>
+document.querySelectorAll('.nova-accordion__header').forEach(header => {
+  header.addEventListener('click', () => {
+    header.classList.toggle('active');
+    const content = header.nextElementSibling;
+    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+  });
+});
+</script>
+
+
+<!-- Документация: Dropdown -->
+<h2 class="nova-heading--primary nova-mt-xl" id="dropdowns">Выпадающее меню (Dropdown)</h2>
+<p>Dropdown — это компонент для выбора одного или нескольких значений, а также для размещения дополнительных действий или информации.</p>
+
+<h3 class="nova-heading--secondary nova-mt-lg">Пример одного выбора</h3>
+<div class="nova-playground">
+    <div class="nova-playground__preview">
+        <div class="nova-dropdown" id="dropdown-gender">
+            <button class="nova-btn nova-btn--secondary" id="dropdown-gender-btn">Gender ▼</button>
+            <ul class="nova-dropdown__menu" id="dropdown-gender-menu">
+                <li><a href="#" data-value="male">Male</a></li>
+                <li><a href="#" data-value="female">Female</a></li>
+                <li><a href="#" data-value="other">Other</a></li>
+            </ul>
+        </div>
+    </div>
+    <pre class="nova-playground__code"><code class="language-html">&lt;div class="nova-dropdown" id="dropdown-gender"&gt;
+    &lt;button class="nova-btn nova-btn--secondary" id="dropdown-gender-btn"&gt;Gender ▼&lt;/button&gt;
+    &lt;ul class="nova-dropdown__menu" id="dropdown-gender-menu"&gt;
+        &lt;li&gt;&lt;a href="#" data-value="male"&gt;Male&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" data-value="female"&gt;Female&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" data-value="other"&gt;Other&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+</div>
+
+<style>
+/* NovaUI Dropdown Component */
+.nova-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+.nova-dropdown__menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--nova-bg-secondary, #fff);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 0.5rem 0;
+    width: 200px;
+    z-index: 1000;
+}
+.nova-dropdown.open > .nova-dropdown__menu {
+    display: block;
+}
+.nova-dropdown__menu li {
+    padding: 0;
+}
+.nova-dropdown__menu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--nova-text-color, #333);
+    cursor: pointer;
+}
+.nova-dropdown__menu li a:hover {
+    background-color: rgba(var(--nova-primary, 0, 123, 255), 0.1);
+}
+</style>
+
+<script>
+// Dropdown JS
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdownGender = document.getElementById('dropdown-gender');
+    const btnGender = document.getElementById('dropdown-gender-btn');
+    const menuGender = document.getElementById('dropdown-gender-menu');
+
+    btnGender.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownGender.classList.toggle('open');
+    });
+
+    // Выбор пункта
+    menuGender.querySelectorAll('a').forEach(item => {
+        item.addEventListener('click', e => {
+            e.preventDefault();
+            btnGender.textContent = item.textContent + ' ▼';
+            dropdownGender.classList.remove('open');
+        });
+    });
+
+    // Закрыть при клике вне dropdown
+    document.addEventListener('click', () => {
+        dropdownGender.classList.remove('open');
+    });
+});
+</script>
+
+<h3 class="nova-heading--secondary nova-mt-lg">Searchable Dropdown</h3>
+<div class="nova-playground">
+    <div class="nova-playground__preview">
+        <div class="nova-dropdown" id="dropdown-country">
+            <button class="nova-btn nova-btn--secondary" id="dropdown-country-btn">Select Country ▼</button>
+            <input type="text" placeholder="Search..." class="nova-dropdown__search" id="dropdown-country-search">
+            <ul class="nova-dropdown__menu" id="dropdown-country-menu">
+                <li><a href="#" data-value="usa">USA</a></li>
+                <li><a href="#" data-value="canada">Canada</a></li>
+                <li><a href="#" data-value="germany">Germany</a></li>
+                <li><a href="#" data-value="france">France</a></li>
+                <li><a href="#" data-value="japan">Japan</a></li>
+            </ul>
+        </div>
+    </div>
+    <pre class="nova-playground__code"><code class="language-html">&lt;div class="nova-dropdown" id="dropdown-country"&gt;
+    &lt;button class="nova-btn nova-btn--secondary"&gt;Select Country ▼&lt;/button&gt;
+    &lt;input type="text" placeholder="Search..." class="nova-dropdown__search"&gt;
+    &lt;ul class="nova-dropdown__menu"&gt;
+        &lt;li&gt;&lt;a href="#" data-value="usa"&gt;USA&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" data-value="canada"&gt;Canada&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" data-value="germany"&gt;Germany&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+</div>
+
+<style>
+.nova-dropdown__search {
+    display: block;
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    margin: 0.2rem 0;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 6px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdownCountry = document.getElementById('dropdown-country');
+    const btnCountry = document.getElementById('dropdown-country-btn');
+    const menuCountry = document.getElementById('dropdown-country-menu');
+    const searchCountry = document.getElementById('dropdown-country-search');
+
+    btnCountry.addEventListener('click', e => {
+        e.stopPropagation();
+        dropdownCountry.classList.toggle('open');
+        searchCountry.focus();
+    });
+
+    menuCountry.querySelectorAll('a').forEach(item => {
+        item.addEventListener('click', e => {
+            e.preventDefault();
+            btnCountry.textContent = item.textContent + ' ▼';
+            dropdownCountry.classList.remove('open');
+            searchCountry.value = '';
+        });
+    });
+
+    searchCountry.addEventListener('input', () => {
+        const filter = searchCountry.value.toLowerCase();
+        menuCountry.querySelectorAll('li').forEach(li => {
+            const text = li.textContent.toLowerCase();
+            li.style.display = text.includes(filter) ? '' : 'none';
+        });
+    });
+
+    document.addEventListener('click', () => {
+        dropdownCountry.classList.remove('open');
+    });
+});
+</script>
+
+<h3 class="nova-heading--secondary nova-mt-lg">Multi-select Dropdown</h3>
+<div class="nova-playground">
+    <div class="nova-playground__preview">
+        <div class="nova-dropdown" id="dropdown-skills">
+            <button class="nova-btn nova-btn--secondary" id="dropdown-skills-btn">Select Skills ▼</button>
+            <ul class="nova-dropdown__menu" id="dropdown-skills-menu">
+                <li><label><input type="checkbox" value="html"> HTML</label></li>
+                <li><label><input type="checkbox" value="css"> CSS</label></li>
+                <li><label><input type="checkbox" value="js"> JavaScript</label></li>
+                <li><label><input type="checkbox" value="react"> React</label></li>
+            </ul>
+        </div>
+    </div>
+    <pre class="nova-playground__code"><code class="language-html">&lt;div class="nova-dropdown" id="dropdown-skills"&gt;
+    &lt;button class="nova-btn nova-btn--secondary"&gt;Select Skills ▼&lt;/button&gt;
+    &lt;ul class="nova-dropdown__menu"&gt;
+        &lt;li&gt;&lt;label&gt;&lt;input type="checkbox" value="html"&gt; HTML&lt;/label&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;label&gt;&lt;input type="checkbox" value="css"&gt; CSS&lt;/label&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdownSkills = document.getElementById('dropdown-skills');
+    const btnSkills = document.getElementById('dropdown-skills-btn');
+    const menuSkills = document.getElementById('dropdown-skills-menu');
+
+    btnSkills.addEventListener('click', e => {
+        e.stopPropagation();
+        dropdownSkills.classList.toggle('open');
+    });
+
+    menuSkills.querySelectorAll('input[type="checkbox"]').forEach(input => {
+        input.addEventListener('change', () => {
+            const selected = Array.from(menuSkills.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(i => i.parentElement.textContent.trim());
+            btnSkills.textContent = selected.length ? selected.join(', ') + ' ▼' : 'Select Skills ▼';
+        });
+    });
+
+    document.addEventListener('click', () => {
+        dropdownSkills.classList.remove('open');
+    });
+});
+</script>
+
+
+
+ <h2 class="nova-heading--primary nova-mt-xl" id="hero">Hero Секции</h2>
+                <p>Hero секции предназначены для привлечения внимания и являются идеальным местом для размещения основной информации или призыва к действию на главной странице.</p>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Пример Hero Секции</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview" style="position: relative; background-color: var(--nova-primary); color: var(--nova-light); padding: 40px;">
+                        <section class="nova-hero nova-hero--lg nova-hero--primary-bg nova-hero--align-center" style="padding: 0;">
+                            <div class="nova-container" style="padding: 0;">
+                                <h1 class="nova-hero__title" style="font-size: 2.5rem;">Ваш заголовок Hero</h1>
+                                <p class="nova-hero__subtitle" style="font-size: 1.25rem;">Краткое описание вашего продукта или услуги.</p>
+                                <div class="nova-hero__actions">
+                                    <a href="#" class="nova-btn nova-btn--light nova-btn--lg">Действие 1</a>
+                                    <a href="#" class="nova-btn nova-btn--outline-light nova-btn--lg">Действие 2</a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                     <pre class="nova-playground__code"><code class="language-html">&lt;section class="nova-hero nova-hero--lg nova-hero--primary-bg nova-hero--align-center"&gt;
+    &lt;div class="nova-container"&gt;
+        &lt;h1 class="nova-hero__title"&gt;...&lt;/h1&gt;
+        &lt;p class="nova-hero__subtitle"&gt;...&lt;/p&gt;
+        &lt;div class="nova-hero__actions"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+                <h2 class="nova-heading--primary nova-mt-xl" id="footer">Футер</h2>
+                <p>Футер (`nova-footer`) предоставляет область для информации о копирайте, ссылках и социальных сетях в нижней части страницы.</p>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Пример футера</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview" style="background-color: var(--nova-footer-bg); color: var(--nova-footer-text-color); padding: 20px;">
+                        <!-- Упрощенный пример футера для демонстрации -->
+                        <footer class="nova-footer" style="margin-top: 0; padding: 0;">
+                            <div class="nova-container" style="padding: 0;">
+                                <div class="nova-grid nova-grid--gap-md">
+                                    <div class="nova-col-12 nova-col-md-4">
+                                        <h5 class="nova-footer__heading">NovaUI</h5>
+                                        <p>Build. Customize. Feel.</p>
+                                    </div>
+                                    <div class="nova-col-12 nova-col-md-4">
+                                        <h5 class="nova-footer__heading">Навигация</h5>
+                                        <ul class="nova-footer__list">
+                                            <li><a href="#" style="color: inherit;">Документация</a></li>
+                                            <li><a href="#" style="color: inherit;">О нас</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="nova-col-12 nova-col-md-4">
+                                        <h5 class="nova-footer__heading">Соцсети</h5>
+                                        <div class="nova-social-links">
+                                            <a href="#" class="nova-social-links__item" style="color: inherit;"><i class="fab fa-github"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nova-footer__bottom" style="margin-top: 20px;">
+                                    <p>&copy; 2023 NovaUI.</p>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;footer class="nova-footer"&gt;
+    &lt;div class="nova-container"&gt;
+        &lt;div class="nova-grid"&gt;
+            &lt;div class="nova-col-md-4"&gt;...&lt;/div&gt;
+            &lt;div class="nova-col-md-4"&gt;...&lt;/div&gt;
+            &lt;div class="nova-col-md-4"&gt;...&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="nova-footer__bottom"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+
+                <h2 class="nova-heading--primary nova-mt-xl" id="spacers">Отступы (Утилиты)</h2>
+                <p>NovaUI предоставляет утилиты для управления внешними (margin) и внутренними (padding) отступами.</p>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Классы отступов</h3>
+                <p>Формат: <code>.{property}{direction}-{size}</code> или <code>.{property}-{size}</code></p>
+                <ul>
+                    <li><code>property</code>: `m` для margin, `p` для padding.</li>
+                    <li><code>direction</code>: `t` (top), `b` (bottom), `l` (left), `r` (right), `x` (left & right), `y` (top & bottom). Для всех сторон `direction` опускается.</li>
+                    <li><code>size</code>: `0`, `xs`, `sm`, `md`, `lg`, `xl`, `auto` (только для margin).</li>
+                </ul>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview">
+                        <div class="nova-card nova-p-lg nova-bg-light nova-mb-md">
+                            <p class="nova-text--center">.nova-p-lg</p>
+                        </div>
+                        <div class="nova-card nova-pt-sm nova-pb-xl nova-bg-light">
+                            <p class="nova-text--center">.nova-pt-sm .nova-pb-xl</p>
+                        </div>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;div class="nova-p-lg"&gt;...&lt;/div&gt;
+&lt;div class="nova-pt-sm nova-pb-xl"&gt;...&lt;/div&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+                <h2 class="nova-heading--primary nova-mt-xl" id="display">Отображение (Утилиты)</h2>
+                <p>Контролируйте свойство <code>display</code> элементов с помощью наших адаптивных классов.</p>
+
+                <h3 class="nova-heading--secondary nova-mt-lg">Классы Display</h3>
+                <div class="nova-playground">
+                    <div class="nova-playground__preview">
+                        <div class="nova-card nova-p-md nova-bg-light nova-mb-md">
+                            <span class="d-block nova-text--center">.d-block</span>
+                        </div>
+                        <div class="nova-card nova-p-md nova-bg-light">
+                            <span class="d-inline-block nova-mr-md">.d-inline-block</span>
+                            <span class="d-inline-block">Еще один .d-inline-block</span>
+                        </div>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;span class="d-block"&gt;...&lt;/span&gt;
+&lt;span class="d-inline-block"&gt;...&lt;/span&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="nova-footer">
+        <div class="nova-container">
+            <div class="nova-grid nova-grid--gap-md">
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">NovaUI</h5>
+                    <p>Build. Customize. Feel.</p>
+                    <div class="nova-social-links">
+                        <a href="#" class="nova-social-links__item" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="nova-social-links__item" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">Навигация</h5>
+                    <ul class="nova-footer__list">
+                        <li><a href="docs.html">Документация</a></li>
+                        <li><a href="customize.html">Цветовая палитра</a></li>
+                        <li><a href="docs.html">О нас</a></li>
+                    </ul>
+                </div>
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">Ресурсы</h5>
+                    <ul class="nova-footer__list">
+                        <li><a href="#installation">Руководство</a></li>
+                        <li><a href="#buttons">Примеры</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nova-footer__bottom">
+                <p>&copy; 2025 NovaUI. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключаем наш JS-файл -->
+    <script src="assets/js/novaui.js"></script>
+</body>
+</html>

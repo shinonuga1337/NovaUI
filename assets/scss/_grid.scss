@@ -1,0 +1,118 @@
+@use "sass:math";
+
+.nova-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: math.div(-1 * $nova-spacer-md, 2); // Смещение для компенсации gap
+  margin-right: math.div(-1 * $nova-spacer-md, 2);
+
+  &--gap-sm {
+    margin-left: math.div(-1 * $nova-spacer-sm, 2);
+    margin-right: math.div(-1 * $nova-spacer-sm, 2);
+    .nova-col {
+      padding-left: math.div($nova-spacer-sm, 2);
+      padding-right: math.div($nova-spacer-sm, 2);
+    }
+  }
+
+  &--gap-md {
+    margin-left: math.div(-1 * $nova-spacer-md, 2);
+    margin-right: math.div(-1 * $nova-spacer-md, 2);
+    .nova-col {
+      padding-left: math.div($nova-spacer-md, 2);
+      padding-right: math.div($nova-spacer-md, 2);
+    }
+  }
+
+  &--gap-lg {
+    margin-left: math.div(-1 * $nova-spacer-lg, 2);
+    margin-right: math.div(-1 * $nova-spacer-lg, 2);
+    .nova-col {
+      padding-left: math.div($nova-spacer-lg, 2);
+      padding-right: math.div($nova-spacer-lg, 2);
+    }
+  }
+
+  &--no-gap {
+    margin-left: 0;
+    margin-right: 0;
+    .nova-col {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.nova-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding-left: math.div($nova-spacer-md, 2);
+  padding-right: math.div($nova-spacer-md, 2);
+}
+
+// Колонки 1-12
+@for $i from 1 through 12 {
+  .nova-col-#{$i} {
+    flex: 0 0 calc(100% / 12 * #{$i});
+    max-width: calc(100% / 12 * #{$i});
+  }
+}
+
+// Отзывчивость
+@media (min-width: $nova-breakpoint-sm) {
+  @for $i from 1 through 12 {
+    .nova-col-sm-#{$i} {
+      flex: 0 0 calc(100% / 12 * #{$i});
+      max-width: calc(100% / 12 * #{$i});
+    }
+  }
+}
+
+@media (min-width: $nova-breakpoint-md) {
+  @for $i from 1 through 12 {
+    .nova-col-md-#{$i} {
+      flex: 0 0 calc(100% / 12 * #{$i});
+      max-width: calc(100% / 12 * #{$i});
+    }
+  }
+}
+
+@media (min-width: $nova-breakpoint-lg) {
+  @for $i from 1 through 12 {
+    .nova-col-lg-#{$i} {
+      flex: 0 0 calc(100% / 12 * #{$i});
+      max-width: calc(100% / 12 * #{$i});
+    }
+  }
+}
+
+@media (min-width: $nova-breakpoint-xl) {
+  @for $i from 1 through 12 {
+    .nova-col-xl-#{$i} {
+      flex: 0 0 calc(100% / 12 * #{$i});
+      max-width: calc(100% / 12 * #{$i});
+    }
+  }
+}
+
+// Выравнивание
+.nova-grid--align-top { align-items: flex-start; }
+.nova-grid--align-middle { align-items: center; }
+.nova-grid--align-bottom { align-items: flex-end; }
+
+.nova-grid--justify-start { justify-content: flex-start; }
+.nova-grid--justify-center { justify-content: center; }
+.nova-grid--justify-end { justify-content: flex-end; }
+.nova-grid--justify-between { justify-content: space-between; }
+.nova-grid--justify-around { justify-content: space-around; }
+
+// Утилиты для колонок
+.nova-col--auto {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.nova-col--equal-width {
+  flex: 1;
+  min-width: 0;
+}

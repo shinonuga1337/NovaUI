@@ -1,0 +1,99 @@
+// assets/scss/_variables.scss
+
+@use "sass:color";
+
+// Цвета
+$nova-color-primary: #6C63FF;
+$nova-color-secondary: #00bcd4;
+$nova-color-success: #28a745;
+$nova-color-danger: #dc3545;
+$nova-color-warning: #ffc107;
+$nova-color-info: #17a2b8;
+$nova-color-light: #f8f9fa;
+$nova-color-dark: #343a40;
+
+// Текст
+$nova-text-color-light: #f8f9fa;
+$nova-text-color-dark: #343a40;
+
+// Фон
+$nova-bg-light: #ffffff;
+$nova-bg-dark: #212529;
+
+// Отступы и размеры
+$nova-spacer-xs: 4px;
+$nova-spacer-sm: 8px;
+$nova-spacer-md: 16px;
+$nova-spacer-lg: 32px;
+$nova-spacer-xl: 64px;
+
+// Радиусы скругления
+$nova-border-radius: 6px;
+$nova-border-radius-rounded: 50px;
+
+// Тени
+$nova-box-shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+$nova-box-shadow-md: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$nova-box-shadow-lg: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+// Шрифты
+$nova-font-family-base: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+$nova-font-size-base: 1rem;
+
+// Медиа-запросы
+$nova-breakpoint-sm: 576px;
+$nova-breakpoint-md: 768px;
+$nova-breakpoint-lg: 992px;
+$nova-breakpoint-xl: 1200px;
+
+$nova-breakpoints: (
+  sm: $nova-breakpoint-sm,
+  md: $nova-breakpoint-md,
+  lg: $nova-breakpoint-lg,
+  xl: $nova-breakpoint-xl
+);
+
+// CSS-переменные
+:root {
+  --nova-primary: #{$nova-color-primary};
+  --nova-secondary: #{$nova-color-secondary};
+  --nova-success: #{$nova-color-success};
+  --nova-danger: #{$nova-color-danger};
+  --nova-warning: #{$nova-color-warning};
+  --nova-info: #{$nova-color-info};
+  --nova-light: #{$nova-color-light};
+  --nova-dark: #{$nova-color-dark};
+
+  --nova-text-color: #{$nova-text-color-dark};
+  --nova-bg-color: #{$nova-bg-light};
+  --nova-card-bg: #{$nova-bg-light};
+  --nova-border-color: rgba(0,0,0,0.1);
+  --nova-header-bg: #{$nova-bg-light};
+  --nova-footer-bg: var(--nova-dark);
+  --nova-footer-text-color: #{$nova-color-light};
+
+  --nova-primary-rgb: #{color.channel($nova-color-primary, "red")}, #{color.channel($nova-color-primary, "green")}, #{color.channel($nova-color-primary, "blue")};
+}
+
+// Темная тема
+.nova-theme--dark {
+  --nova-primary: #{$nova-color-primary};
+  --nova-secondary: #{$nova-color-secondary};
+  --nova-success: #{$nova-color-success};
+  --nova-danger: #{$nova-color-danger};
+  --nova-warning: #{$nova-color-warning};
+  --nova-info: #{$nova-color-info};
+  --nova-light: #{$nova-color-light};
+  --nova-dark: #{$nova-color-dark};
+
+  --nova-text-color: #{$nova-text-color-light};
+  --nova-bg-color: #{$nova-bg-dark};
+  --nova-card-bg: #111;
+  --nova-border-color: rgba(255,255,255,0.1);
+  --nova-header-bg: #111;
+  --nova-footer-bg: var(--nova-dark);
+  --nova-footer-text-color: #{$nova-color-light};
+
+--nova-primary-rgb: 108, 99, 255; // ручное значение RGB для #6C63FF
+
+}

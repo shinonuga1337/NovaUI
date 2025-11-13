@@ -1,0 +1,70 @@
+.nova-hero {
+    position: relative;
+    padding: $nova-spacer-xl 0;
+    text-align: center;
+    overflow: hidden; // Для фоновых изображений/видео
+
+    // Размеры Hero
+    &--sm { padding: $nova-spacer-lg 0; }
+    &--md { padding: $nova-spacer-xl 0; }
+    &--lg { padding: ($nova-spacer-xl * 1.5) 0; }
+    &--fullscreen {
+        min-height: 100vh;
+        @include nova-flex-center; // Центрирование контента
+        flex-direction: column;
+        padding: $nova-spacer-xl 0; // Добавим паддинг, чтобы контент не прилипал
+    }
+
+    // Фоновые цвета
+    &--primary-bg { background-color: var(--nova-primary); color: var(--nova-light); }
+    &--dark-bg { background-color: var(--nova-dark); color: var(--nova-light); }
+    &--light-bg { background-color: var(--nova-light); color: var(--nova-dark); }
+
+    &__title {
+        font-size: 3rem;
+        margin-bottom: $nova-spacer-md;
+        color: inherit; // Наследует цвет от родителя (секции)
+
+        @media (max-width: $nova-breakpoint-md) {
+            font-size: 2.2rem;
+        }
+    }
+
+    &__subtitle {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: $nova-spacer-lg;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        color: inherit;
+
+        @media (max-width: $nova-breakpoint-md) {
+            font-size: 1.1rem;
+        }
+    }
+
+    &__actions {
+        margin-top: $nova-spacer-lg;
+        display: flex;
+        justify-content: center;
+        gap: $nova-spacer-md; // Отступ между кнопками
+
+        .nova-btn {
+            margin: 0; // Отмена стандартных марджинов
+        }
+    }
+
+    // Выравнивание контента
+    &--align-left { text-align: left; }
+    &--align-center { text-align: center; }
+    &--align-right { text-align: right; }
+
+    // Фон изображения/видео (для примера, не реализован полностью здесь)
+    &--bg-image {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        // background-image: url('path/to/image.jpg');
+    }
+}

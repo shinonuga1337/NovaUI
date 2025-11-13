@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaUI — Build. Customize. Feel.</title>
+    <!-- Подключаем наш скомпилированный CSS -->
+    <!-- Убедитесь, что путь "assets/css/novaui.css" верен относительно index.html -->
+    <link rel="stylesheet" href="assets/css/novaui.css">
+    <!-- Иконочный шрифт (можно использовать Font Awesome или другой) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="nova-theme--light">
+
+    <!-- Header (Шапка сайта) -->
+    <header class="nova-header">
+        <div class="nova-container">
+            <div class="nova-header__brand">
+                <a href="index.html">NovaUI</a>
+            </div>
+            <nav class="nova-header__nav">
+                <ul class="nova-menu">
+                    <li class="nova-menu__item"><a href="docs.html">Документация</a></li>
+                    <li class="nova-menu__item"><a href="customize.html">Цветовая палитра</a></li>
+                </ul>
+            </nav>
+            <button class="nova-burger-menu" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nova-theme-switcher">
+                <button id="theme-switcher-btn" class="nova-btn nova-btn--ghost nova-btn--icon" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i> <!-- Иконка солнца по умолчанию -->
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="nova-hero nova-hero--lg nova-hero--primary-bg nova-hero--align-center">
+        <div class="nova-container">
+            <h1 class="nova-hero__title">NovaUI — Build. Customize. Feel.</h1>
+            <p class="nova-hero__subtitle">Легкий CSS-фреймворк с интерактивной документацией и живым кастомизатором.</p>
+            <div class="nova-hero__actions">
+                <a href="docs.html" class="nova-btn nova-btn--light nova-btn--lg">Начать</a>
+                <a href="https://github.com/shinonuga1337" class="nova-btn nova-btn--outline-light nova-btn--lg">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="nova-main">
+        <div class="nova-container">
+
+            <section class="nova-section">
+                <h2 class="nova-heading--primary">Style Playground: Buttons</h2>
+                <p>Экспериментируйте с кнопками в реальном времени.</p>
+
+                <!-- Style Playground для кнопок -->
+                <div class="nova-playground">
+                    <div class="nova-playground__preview">
+                        <button class="nova-btn nova-btn--primary">Primary Button</button>
+                        <button class="nova-btn nova-btn--secondary">Secondary</button>
+                        <button class="nova-btn nova-btn--success nova-btn--lg"><i class="fas fa-check"></i> Success Large</button>
+                        <button class="nova-btn nova-btn--danger nova-btn--outline nova-btn--sm">Danger Small</button>
+                        <button class="nova-btn nova-btn--info nova-btn--rounded">Info Rounded</button>
+                        <button class="nova-btn nova-btn--dark nova-btn--ghost">Ghost Dark</button>
+                    </div>
+                    <pre class="nova-playground__code"><code class="language-html">&lt;button class="nova-btn nova-btn--primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--success nova-btn--lg"&gt;&lt;i class="fas fa-check"&gt;&lt;/i&gt; Success Large&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--danger nova-btn--outline nova-btn--sm"&gt;Danger Small&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--info nova-btn--rounded"&gt;Info Rounded&lt;/button&gt;
+&lt;button class="nova-btn nova-btn--dark nova-btn--ghost"&gt;Ghost Dark&lt;/button&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+            </section>
+
+            <section class="nova-section">
+                <h2 class="nova-heading--primary">Grid System</h2>
+                <p>Примеры адаптивной сетки NovaUI.</p>
+
+                <div class="nova-playground">
+                    <div class="nova-playground__preview nova-grid nova-grid--gap-md">
+                        <div class="nova-col-12 nova-col-md-6 nova-col-lg-4">
+                            <div class="nova-card nova-card--elevated">
+                                <div class="nova-card__content">
+                                    <h4 class="nova-card__header">Колонка 1</h4>
+                                    <p>Это первая колонка в адаптивной сетке NovaUI.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nova-col-12 nova-col-md-6 nova-col-lg-4">
+                            <div class="nova-card nova-card--elevated">
+                                <div class="nova-card__content">
+                                    <h4 class="nova-card__header">Колонка 2</h4>
+                                    <p>На мобильных устройствах будет занимать всю ширину, на средних — половину.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nova-col-12 nova-col-md-12 nova-col-lg-4">
+                            <div class="nova-card nova-card--elevated">
+                                <div class="nova-card__content">
+                                    <h4 class="nova-card__header">Колонка 3</h4>
+                                    <p>И эта колонка также адаптируется к размеру экрана.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <pre class="nova-playground__code"><code class="language-html">&lt;div class="nova-grid nova-grid--gap-md"&gt;
+    &lt;div class="nova-col-12 nova-col-md-6 nova-col-lg-4"&gt;
+        &lt;div class="nova-card"&gt;Колонка 1&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="nova-col-12 nova-col-md-6 nova-col-lg-4"&gt;
+        &lt;div class="nova-card"&gt;Колонка 2&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="nova-col-12 nova-col-md-12 nova-col-lg-4"&gt;
+        &lt;div class="nova-card"&gt;Колонка 3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+            </section>
+
+            <section class="nova-section nova-mb-xl">
+    <h2 class="nova-heading--primary">Magic Grid</h2>
+    <p>Нажимайте "Add Card" или "Remove Card", чтобы добавить или убрать карточки.</p>
+
+    <div class="nova-grid nova-grid--gap-lg">
+        <!-- Левая часть: интерактивная сетка -->
+        <div class="nova-col-12 nova-col-lg-6">
+            <div class="nova-grid-controls nova-mb-md">
+                <button id="add-card" class="nova-btn nova-btn--primary">Add Card</button>
+                <button id="remove-card" class="nova-btn nova-btn--danger">Remove Card</button>
+            </div>
+            <div id="magic-grid" class="nova-grid nova-grid--gap-md"></div>
+        </div>
+
+        <!-- Правая часть: код -->
+        <div class="nova-col-12 nova-col-lg-6">
+            <pre class="nova-playground__code"><code id="magic-grid-code" class="language-html">
+<!-- HTML -->
+&lt;div id="magic-grid"&gt;&lt;/div&gt;
+
+&lt;button id="add-card"&gt;Add Card&lt;/button&gt;
+&lt;button id="remove-card"&gt;Remove Card&lt;/button&gt;
+
+<!-- JS -->
+const magicGrid = document.getElementById('magic-grid');
+const addCardBtn = document.getElementById('add-card');
+const removeCardBtn = document.getElementById('remove-card');
+
+addCardBtn.addEventListener('click', () => {
+  const count = magicGrid.children.length + 1;
+  const newCard = document.createElement('div');
+  newCard.className = 'nova-col';
+  newCard.textContent = `Card ${count}`;
+  magicGrid.appendChild(newCard);
+});
+
+removeCardBtn.addEventListener('click', () => {
+  if (magicGrid.children.length > 0) {
+    magicGrid.removeChild(magicGrid.lastChild);
+  }
+});
+            </code></pre>
+            <button class="nova-btn nova-btn--secondary nova-copy-btn" data-target="magic-grid-code">📋 Copy Code</button>
+        </div>
+    </div>
+</section>
+
+
+            <section class="nova-section">
+                <h2 class="nova-heading--primary">Cards</h2>
+                <p>Примеры различных стилей карточек.</p>
+
+                <div class="nova-playground">
+                    <div class="nova-playground__preview nova-grid nova-grid--gap-lg nova-grid--justify-center">
+                        <div class="nova-col-12 nova-col-sm-6 nova-col-md-4">
+                            <div class="nova-card nova-card--elevated">
+                                <div class="nova-card__image">
+                                    <img src="https://via.placeholder.com/400x250/F0F2F5/8693A1?text=Image" alt="Placeholder Image">
+                                </div>
+                                <div class="nova-card__content">
+                                    <h4 class="nova-card__header">Заголовок Карточки</h4>
+                                    <p class="nova-card__meta">Категория | 12 ноября 2023</p>
+                                    <p>Краткое описание содержимого карточки. Это может быть новость, товар или элемент блога.</p>
+                                </div>
+                                <div class="nova-card__actions">
+                                    <button class="nova-btn nova-btn--primary">Подробнее</button>
+                                    <button class="nova-btn nova-btn--text">Поделиться</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="nova-col-12 nova-col-sm-6 nova-col-md-4">
+                            <div class="nova-card nova-card--outline">
+                                <div class="nova-card__image">
+                                    <img src="https://via.placeholder.com/400x250/E0E2E5/768391?text=Another Image" alt="Placeholder Image">
+                                </div>
+                                <div class="nova-card__content">
+                                    <h4 class="nova-card__header">Карточка с рамкой</h4>
+                                    <p class="nova-card__meta">Продукт | В наличии</p>
+                                    <p>Карточка с обводкой и более сдержанным стилем, идеально подходит для каталогов.</p>
+                                </div>
+                                <div class="nova-card__actions">
+                                    <button class="nova-btn nova-btn--secondary">Купить</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="nova-col-12 nova-col-sm-6 nova-col-md-4">
+                            <div class="nova-card nova-card--flat">
+                                <div class="nova-card__content">
+                                    <h4 class="nova-card__header">Плоская Карточка</h4>
+                                    <p class="nova-card__meta">Событие | Сегодня</p>
+                                    <p>Минималистичная карточка без теней и границ, для акцента на контенте.</p>
+                                </div>
+                                <div class="nova-card__actions">
+                                    <button class="nova-btn nova-btn--info">Присоединиться</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <pre class="nova-playground__code"><code class="language-html">&lt;div class="nova-card nova-card--elevated"&gt;
+    &lt;div class="nova-card__image"&gt;
+        &lt;img src="https://via.placeholder.com/400x250" alt="Placeholder Image"&gt;
+    &lt;/div&gt;
+    &lt;div class="nova-card__content"&gt;
+        &lt;h4 class="nova-card__header"&gt;Заголовок Карточки&lt;/h4&gt;
+        &lt;p class="nova-card__meta"&gt;Категория | 12 ноября 2023&lt;/p&gt;
+        &lt;p&gt;Краткое описание содержимого карточки.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="nova-card__actions"&gt;
+        &lt;button class="nova-btn nova-btn--primary"&gt;Подробнее&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Другие вариации: nova-card--outline, nova-card--flat --&gt;</code></pre>
+                    <button class="nova-btn nova-btn--secondary nova-copy-btn">📋 Copy Code</button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="nova-footer">
+        <div class="nova-container">
+            <div class="nova-grid nova-grid--gap-md">
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">NovaUI</h5>
+                    <p>Build. Customize. Feel.</p>
+                    <div class="nova-social-links">
+                        <a href="#" class="nova-social-links__item" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="nova-social-links__item" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">Навигация</h5>
+                    <ul class="nova-footer__list">
+                        <li><a href="docs.html">Документация</a></li>
+                        <li><a href="customize.html">Цветовая палитра</a></li>
+                        <li><a href="docs.html">О нас</a></li>
+                    </ul>
+                </div>
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">Ресурсы</h5>
+                    <ul class="nova-footer__list">
+                        <li><a href="#installation">Руководство</a></li>
+                        <li><a href="#buttons">Примеры</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nova-footer__bottom">
+                <p>&copy; 2025 NovaUI. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключаем наш JS-файл -->
+    <!-- Убедитесь, что путь "assets/js/novaui.js" верен относительно index.html -->
+    <script src="assets/js/novaui.js"></script>
+</body>
+</html>

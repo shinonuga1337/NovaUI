@@ -1,0 +1,61 @@
+.nova-card {
+    background-color: var(--nova-card-bg);
+    border-radius: $nova-border-radius;
+    border: 1px solid var(--nova-border-color);
+    overflow: hidden; // Для скругления углов изображений
+    @include nova-transition(background-color, border-color, box-shadow);
+
+    &--elevated {
+        @include nova-shadow(sm); // Легкая тень
+        &:hover {
+            @include nova-shadow(md); // Более выраженная тень при наведении
+        }
+    }
+
+    &--outline {
+        border: 2px solid var(--nova-primary); // Акцентная рамка
+    }
+
+    &--flat {
+        border: none;
+        background-color: transparent;
+        border-radius: 0;
+    }
+
+    &__image {
+        img {
+            width: 100%;
+            height: 200px; // Фиксированная высота для единообразия
+            object-fit: cover; // Обрезка изображения, чтобы оно заполняло
+        }
+    }
+
+    &__content {
+        padding: $nova-spacer-md;
+    }
+
+    &__header {
+        font-size: 1.25rem;
+        margin-top: 0;
+        margin-bottom: $nova-spacer-xs;
+    }
+
+    &__meta {
+        font-size: 0.875rem;
+        color: var(--nova-text-color);
+        opacity: 0.7;
+        margin-bottom: $nova-spacer-md;
+    }
+
+    &__actions {
+        padding: $nova-spacer-sm $nova-spacer-md;
+        border-top: 1px solid var(--nova-border-color);
+        display: flex;
+        justify-content: flex-end; // Кнопки справа
+        gap: $nova-spacer-sm; // Отступ между кнопками
+
+        .nova-btn {
+            margin-bottom: 0;
+        }
+    }
+}

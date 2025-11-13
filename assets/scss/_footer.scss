@@ -1,0 +1,90 @@
+.nova-footer {
+    background-color: var(--nova-footer-bg);
+    color: var(--nova-footer-text-color);
+    padding: $nova-spacer-xl 0 $nova-spacer-md;
+    margin-top: $nova-spacer-xl;
+
+    .nova-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__heading {
+        color: var(--nova-footer-text-color);
+        font-size: 1.2rem;
+        margin-bottom: $nova-spacer-md;
+        border-bottom: 1px solid rgba(var(--nova-footer-text-color), 0.2);
+        padding-bottom: $nova-spacer-sm;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: $nova-spacer-xs;
+            a {
+                color: var(--nova-footer-text-color);
+                text-decoration: none;
+                &:hover {
+                    color: var(--nova-primary);
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .nova-social-links {
+        display: flex;
+        margin-top: $nova-spacer-md;
+
+        &__item {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            @include nova-flex-center;
+            border-radius: 50%;
+            background-color: rgba(var(--nova-footer-text-color), 0.1);
+            color: var(--nova-footer-text-color);
+            font-size: 1.2rem;
+            margin-right: $nova-spacer-sm;
+            @include nova-transition(background-color, color);
+
+            &:hover {
+                background-color: var(--nova-primary);
+                color: var(--nova-light);
+            }
+        }
+    }
+
+    &__bottom {
+        border-top: 1px solid rgba(var(--nova-footer-text-color), 0.1);
+        padding-top: $nova-spacer-md;
+        margin-top: $nova-spacer-xl;
+        text-align: center;
+        font-size: 0.875rem;
+        opacity: 0.8;
+    }
+
+    @media (max-width: $nova-breakpoint-md) {
+        text-align: center;
+        .nova-col-12 {
+            margin-bottom: $nova-spacer-lg;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .nova-social-links {
+            justify-content: center;
+        }
+        .nova-footer__list {
+            li {
+                display: inline-block;
+                &:not(:last-child) {
+                    margin-right: $nova-spacer-md;
+                }
+            }
+        }
+    }
+}

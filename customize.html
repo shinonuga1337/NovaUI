@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaUI — Цветовая палитра</title>
+<link rel="stylesheet" href="assets/css/novaui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+/* Основной блок палитры */
+.palette-section {
+    padding: 2rem 0;
+}
+.palette-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+.palette-card {
+    border-radius: 12px;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+.palette-card:hover {
+    transform: scale(1.05);
+}
+.palette-code {
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+/* Градиенты */
+.gradient-preview {
+    height: 80px;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+/* Темная и светлая проверка */
+.light-dark-preview {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+.light-dark-box {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+/* Кнопка копирования */
+.copy-btn {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+}
+</style>
+</head>
+<body class="nova-theme--light">
+
+<header class="nova-header">
+<div class="nova-container">
+<div class="nova-header__brand"><a href="index.html">NovaUI</a></div>
+<nav class="nova-header__nav">
+<ul class="nova-menu">
+<li class="nova-menu__item"><a href="docs.html">Документация</a></li>
+<li class="nova-menu__item"><a href="customize.html" class="active">Цветовая палитра</a></li>
+</ul>
+</nav>
+<button class="nova-burger-menu" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+<div class="nova-theme-switcher">
+<button id="theme-switcher-btn" class="nova-btn nova-btn--ghost nova-btn--icon"><i class="fas fa-sun"></i></button>
+</div>
+</div>
+</header>
+
+<main class="nova-main">
+<div class="nova-container palette-section">
+
+    <div class="palette-header">
+        <h1 class="nova-heading--primary">Цветовая палитра NovaUI</h1>
+        <p>Интерактивная визуализация основных цветов и градиентов фреймворка. Кликайте на цвет, чтобы скопировать HEX-код.</p>
+    </div>
+
+    <!-- Основные цвета -->
+    <h2 class="nova-heading--secondary">Основные цвета</h2>
+    <div class="palette-grid" id="primary-colors">
+        <div class="palette-card" style="background:#FF5733" data-hex="#FF5733">
+            <div>Primary</div>
+            <div class="palette-code">#FF5733</div>
+        </div>
+        <div class="palette-card" style="background:#33A1FF" data-hex="#33A1FF">
+            <div>Secondary</div>
+            <div class="palette-code">#33A1FF</div>
+        </div>
+        <div class="palette-card" style="background:#28A745" data-hex="#28A745">
+            <div>Success</div>
+            <div class="palette-code">#28A745</div>
+        </div>
+        <div class="palette-card" style="background:#DC3545" data-hex="#DC3545">
+            <div>Danger</div>
+            <div class="palette-code">#DC3545</div>
+        </div>
+        <div class="palette-card" style="background:#FFC107" data-hex="#FFC107">
+            <div>Warning</div>
+            <div class="palette-code">#FFC107</div>
+        </div>
+        <div class="palette-card" style="background:#17A2B8" data-hex="#17A2B8">
+            <div>Info</div>
+            <div class="palette-code">#17A2B8</div>
+        </div>
+    </div>
+
+    <!-- Градиенты -->
+<h2 class="nova-heading--secondary nova-mt-xl">Градиенты</h2>
+<div class="palette-grid" id="gradients">
+    <div class="palette-card" data-hex="linear-gradient(45deg, #FF5733, #FFC107)">
+        <div class="gradient-preview" style="background: linear-gradient(45deg, #FF5733, #FFC107)"></div>
+        <div class="palette-code">linear-gradient(45deg, #FF5733, #FFC107)</div>
+    </div>
+    <div class="palette-card" data-hex="linear-gradient(45deg, #28A745, #FFC107)">
+        <div class="gradient-preview" style="background: linear-gradient(45deg, #28A745, #FFC107)"></div>
+        <div class="palette-code">linear-gradient(45deg, #28A745, #FFC107)</div>
+    </div>
+    <div class="palette-card" data-hex="linear-gradient(135deg, #8D33FF, #33FFF6)">
+        <div class="gradient-preview" style="background: linear-gradient(135deg, #8D33FF, #33FFF6)"></div>
+        <div class="palette-code">linear-gradient(135deg, #8D33FF, #33FFF6)</div>
+    </div>
+    <div class="palette-card" data-hex="linear-gradient(90deg, #FF33A6, #FF5733)">
+        <div class="gradient-preview" style="background: linear-gradient(90deg, #FF33A6, #FF5733)"></div>
+        <div class="palette-code">linear-gradient(90deg, #FF33A6, #FF5733)</div>
+    </div>
+    <div class="palette-card" data-hex="linear-gradient(120deg, #FFC133, #17A2B8)">
+        <div class="gradient-preview" style="background: linear-gradient(120deg, #FFC133, #17A2B8)"></div>
+        <div class="palette-code">linear-gradient(120deg, #FFC133, #17A2B8)</div>
+    </div>
+    <div class="palette-card" data-hex="linear-gradient(60deg, #33FF57, #28A745)">
+        <div class="gradient-preview" style="background: linear-gradient(60deg, #33FF57, #28A745)"></div>
+        <div class="palette-code">linear-gradient(60deg, #33FF57, #28A745)</div>
+    </div>
+    <div class="palette-card" data-hex="linear-gradient(200deg, #33A1FF, #8D33FF)">
+        <div class="gradient-preview" style="background: linear-gradient(200deg, #33A1FF, #8D33FF)"></div>
+        <div class="palette-code">linear-gradient(200deg, #33A1FF, #8D33FF)</div>
+    </div>
+</div>
+
+<style>
+.palette-card .gradient-preview {
+    border-radius: 8px;
+    height: 80px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.palette-card:hover .gradient-preview {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+</style>
+
+
+    <!-- Контраст для текста -->
+    <h2 class="nova-heading--secondary nova-mt-xl">Контраст текста</h2>
+    <div class="palette-grid" id="contrast-test">
+        <div class="palette-card" style="background:#FF5733">
+            <div>Primary</div>
+            <div class="light-dark-preview">
+                <div class="light-dark-box" style="background:white; color:#FF5733">Light BG</div>
+                <div class="light-dark-box" style="background:#222; color:#FF5733">Dark BG</div>
+            </div>
+        </div>
+        <div class="palette-card" style="background:#33A1FF">
+            <div>Secondary</div>
+            <div class="light-dark-preview">
+                <div class="light-dark-box" style="background:white; color:#33A1FF">Light BG</div>
+                <div class="light-dark-box" style="background:#222; color:#33A1FF">Dark BG</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</main>
+    <!-- Footer -->
+    <footer class="nova-footer">
+        <div class="nova-container">
+            <div class="nova-grid nova-grid--gap-md">
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">NovaUI</h5>
+                    <p>Build. Customize. Feel.</p>
+                    <div class="nova-social-links">
+                        <a href="#" class="nova-social-links__item" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="nova-social-links__item" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">Навигация</h5>
+                    <ul class="nova-footer__list">
+                        <li><a href="docs.html">Документация</a></li>
+                        <li><a href="customize.html">Цветовая палитра</a></li>
+                        <li><a href="docs.html">О нас</a></li>
+                    </ul>
+                </div>
+                <div class="nova-col-12 nova-col-md-4">
+                    <h5 class="nova-footer__heading">Ресурсы</h5>
+                    <ul class="nova-footer__list">
+                        <li><a href="#installation">Руководство</a></li>
+                        <li><a href="#buttons">Примеры</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nova-footer__bottom">
+                <p>&copy; 2025 NovaUI. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+<script>
+document.querySelectorAll('.palette-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const code = card.dataset.hex;
+        navigator.clipboard.writeText(code).then(() => {
+            card.querySelector('.palette-code').textContent = code + ' ✅';
+            setTimeout(() => card.querySelector('.palette-code').textContent = code, 1000);
+        });
+    });
+});
+
+</script>
+ <script src="assets/js/novaui.js"></script>
+</body>
+</html>

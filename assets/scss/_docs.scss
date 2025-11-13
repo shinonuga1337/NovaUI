@@ -1,0 +1,91 @@
+@use "sass:math";
+
+// Sidebar
+.nova-sidebar {
+    padding-top: $nova-spacer-md;
+    padding-bottom: $nova-spacer-md;
+    position: sticky;
+    top: 20px; // расстояние от верха окна
+    align-self: flex-start;
+
+    @media (max-width: $nova-breakpoint-md) {
+        border-bottom: 1px solid var(--nova-border-color);
+        margin-bottom: $nova-spacer-lg;
+        position: static; // на мобильных отключаем sticky
+    }
+}
+
+// Навигация по документации
+.nova-docs-nav {
+    &__heading {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--nova-text-color);
+        opacity: 0.8;
+        margin-bottom: $nova-spacer-sm;
+        margin-top: $nova-spacer-md;
+    }
+
+    .nova-menu--vertical {
+        list-style: none;
+        padding: 0;
+        margin-bottom: $nova-spacer-lg;
+
+        .nova-menu__item {
+            margin-bottom: $nova-spacer-xs;
+
+            a {
+                display: block;
+                padding: $nova-spacer-xs $nova-spacer-sm;
+                color: var(--nova-text-color);
+                text-decoration: none;
+                border-radius: $nova-border-radius;
+                transition: background-color 0.3s, color 0.3s;
+
+                &:hover {
+                    background-color: rgba(var(--nova-primary), 0.1);
+                    color: var(--nova-primary);
+                }
+
+                &.active {
+                    background-color: var(--nova-primary);
+                    color: var(--nova-light);
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+// Контент документации
+.nova-docs-content {
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: $nova-spacer-xl;
+        padding-top: $nova-spacer-md;
+    }
+
+    ul, ol {
+        margin-left: $nova-spacer-lg;
+        margin-bottom: $nova-spacer-md;
+
+        li {
+            margin-bottom: math.div($nova-spacer-xs, 2);
+        }
+    }
+
+    pre {
+        background-color: var(--nova-dark);
+        color: var(--nova-light);
+        padding: $nova-spacer-md;
+        border-radius: $nova-border-radius;
+        overflow-x: auto;
+        margin-bottom: $nova-spacer-md;
+
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+    }
+}

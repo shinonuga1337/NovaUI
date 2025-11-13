@@ -1,0 +1,179 @@
+@use "sass:color";
+
+.nova-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $nova-spacer-sm $nova-spacer-md;
+  font-size: $nova-font-size-base;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: $nova-border-radius;
+  @include nova-transition(color, background-color, border-color, box-shadow);
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(var(--nova-primary-rgb), 0.25);
+  }
+
+  // Состояния
+  &--disabled,
+  &:disabled {
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  // Размеры
+  &--sm {
+    padding: $nova-spacer-xs $nova-spacer-sm;
+    font-size: 0.875rem;
+  }
+
+  &--lg {
+    padding: $nova-spacer-md $nova-spacer-xl;
+    font-size: 1.25rem;
+  }
+
+  // Цветовые вариации
+  @each $name, $color in (
+    primary: var(--nova-primary, $nova-color-primary),
+    secondary: var(--nova-secondary, $nova-color-secondary),
+    success: var(--nova-success, $nova-color-success),
+    danger: var(--nova-danger, $nova-color-danger),
+    warning: var(--nova-warning, $nova-color-warning),
+    info: var(--nova-info, $nova-color-info),
+    light: var(--nova-light, $nova-color-light),
+    dark: var(--nova-dark, $nova-color-dark)
+  ) {
+    &--#{$name} {
+      color: #{if($name == 'light', var(--nova-dark), var(--nova-light))};
+      background-color: $color;
+      border-color: $color;
+
+      &:hover {
+        // Заменено darken() на color-mix — поддерживает var()
+        background-color: color-mix(in srgb, $color 85%, black);
+        border-color: color-mix(in srgb, $color 85%, black);
+      }
+
+      &:active {
+        background-color: color-mix(in srgb, $color 70%, black);
+        border-color: color-mix(in srgb, $color 70%, black);
+      }
+    }
+
+    // Outline
+    &--outline-#{$name} {
+      color: $color;
+      border-color: $color;
+      background-color: transparent;
+
+      &:hover {
+        color: #{if($name == 'light', var(--nova-dark), var(--nova-light))};
+        background-color: $color;
+        border-color: $color;
+      }
+    }
+
+    // Ghost
+    &--ghost-#{$name} {
+      color: $color;
+      border: none;
+      background-color: transparent;
+
+      &:hover {
+        color: color-mix(in srgb, $color 90%, black);
+        background-color: color-mix(in srgb, $color 10%, white);
+      }
+    }
+  }
+
+  // Дополнительные вариации
+  &--rounded {
+    border-radius: $nova-border-radius-rounded;
+  }
+
+  &--pill {
+    border-radius: 9999px;
+  }
+
+  &--square {
+    border-radius: 0;
+  }
+
+  &--icon {
+  padding: $nova-spacer-sm;
+  width: calc(#{$nova-font-size-base} * 1.5 + #{$nova-spacer-sm} * 2);
+  height: calc(#{$nova-font-size-base} * 1.5 + #{$nova-spacer-sm} * 2);
+
+  .fas,
+  .fab {
+    font-size: 1.2em;
+  }
+
+  &.nova-btn--sm {
+    width: calc(#{$nova-font-size-base} * 1.2 + #{$nova-spacer-xs} * 2);
+    height: calc(#{$nova-font-size-base} * 1.2 + #{$nova-spacer-xs} * 2);
+    padding: $nova-spacer-xs;
+  }
+}
+
+
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+
+  // Иконки внутри кнопок
+  .fas,
+  .fab {
+    margin-right: $nova-spacer-xs;
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: $nova-spacer-xs;
+    }
+
+    &:first-child:last-child {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+}
+
+.nova-btn-group {
+  display: inline-flex;
+  vertical-align: middle;
+
+  .nova-btn {
+    border-radius: 0;
+
+    &:first-child {
+      border-top-left-radius: $nova-border-radius;
+      border-bottom-left-radius: $nova-border-radius;
+    }
+
+    &:last-child {
+      border-top-right-radius: $nova-border-radius;
+      border-bottom-right-radius: $nova-border-radius;
+    }
+
+    &:not(:last-child) {
+      border-right: 0;
+    }
+
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+  }
+}
