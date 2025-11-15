@@ -357,3 +357,106 @@ removeCardBtn.addEventListener('click', () => {
 // Инициализация
 updateMagicGridCode();
 
+(function() {
+  const root = document.documentElement;
+  const LS_KEY = 'novaCustomizer';
+
+  const panel = document.getElementById('nova-customizer');
+  const toggleBtn = document.getElementById('nova-customizer-btn');
+  const closeBtn = document.getElementById('nova-customizer-close');
+
+  const inputs = {
+    primary: document.getElementById('nc-primary'),
+    secondary: document.getElementById('nc-secondary'),
+    success: document.getElementById('nc-success'),
+    danger: document.getElementById('nc-danger'),
+    bg: document.getElementById('nc-bg'),
+    fontSize: document.getElementById('nc-font-size'),
+    radius: document.getElementById('nc-radius')
+  };
+  const fontVal = document.getElementById('nc-font-size-val');
+  const radiusVal = document.getElementById('nc-radius-val');
+  const applyBtn = document.getElementById('nc-apply');
+  const resetBtn = document.getElementById('nc-reset');
+  const copyBtn = document.getElementById('nc-copy');
+  const generated = document.getElementById('nc-generated');
+
+  // open/close panel
+  toggleBtn.addEventListener('click', () => {
+    panel.classList.toggle('open');
+    panel.setAttribute('aria-hidden', panel.classList.contains('open') ? 'false' : 'true');
+  });
+  closeBtn.addEventListener('click', () => { panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); });
+
+  // defaults
+  const defaults = {
+    primary: getComputedStyle(root).getPropertyValue('--nova-primary').trim() || '#6C63FF',
+    secondary: getComputedStyle(root).getPropertyValue('--nova-secondary').trim() || '#00bcd4',
+    success: getComputedStyle(root).getPropertyValue('--nova-success').trim() || '#28a745',
+    danger: getComputedStyle(root).getPropertyValue('--nova-danger').trim() || '#dc3545',
+    bg: getComputedStyle(root).getPropertyValue('--nova-bg-color').trim() || '#ffffff',
+    fontSize: parseFloat(getComputedStyle(root).getPropertyValue('--nova-font-size-base')) || 1,
+    radius: parseInt(getComputedStyle(root).getPropertyValue('--nova-border-radius')) || 6
+  };
+
+  function loadSaved(){
+    try{ return Object.assign({}, defaults, JSON.parse(localStorage.getItem(LS_KEY)||'{}')); }
+    catch(e){ return Object.assign({}, defaults); }
+  }
+
+ function applyValues(vals, persist=false){
+    // устанавливаем переменные
+    root.style.setProperty('--nova-primary', vals.primary);
+    root.style.setProperty('--nova-secondary', vals.secondary);
+    root.style.setProperty('--nova-success', vals.success);
+    root.style.setProperty('--nova-danger', vals.danger);
+    root.style.setProperty('--nova-bg-color', vals.bg);
+    root.style.setProperty('--nova-font-size-base', vals.fontSize+'rem');
+    root.style.setProperty('--nova-border-radius', vals.radius+'px');
+
+    // убираем любые темы, чтобы кастомные цвета всегда работали
+    document.body.classList.remove('nova-theme--light','nova-theme--dark');
+
+    // обновляем inputs и превью
+    Object.keys(inputs).forEach(key=>{
+      if(inputs[key]) inputs[key].value = vals[key];
+    });
+    fontVal.textContent = Number(vals.fontSize).toFixed(2);
+    radiusVal.textContent = vals.radius+'px';
+
+    // обновляем блок с CSS
+    generated.textContent = `:root {
+  --nova-primary: ${vals.primary};
+  --nova-secondary: ${vals.secondary};
+  --nova-success: ${vals.success};
+  --nova-danger: ${vals.danger};
+  --nova-bg-color: ${vals.bg};
+  --nova-font-size-base: ${vals.fontSize}rem;
+  --nova-border-radius: ${vals.radius}px;
+}`;
+
+    if(persist) localStorage.setItem(LS_KEY, JSON.stringify(vals));
+}
+
+
+  // live update
+  Object.keys(inputs).forEach(key=>{
+    const el=inputs[key];
+    el.addEventListener('input',()=>{
+      const vals=loadSaved();
+      vals[key] = (key==='fontSize'||key==='radius')? Number(el.value) : el.value;
+      applyValues(vals,false);
+    });
+  });
+
+  // actions
+  applyBtn.addEventListener('click', ()=>applyValues(loadSaved(), true));
+  resetBtn.addEventListener('click', ()=>{
+    localStorage.removeItem(LS_KEY);
+    applyValues(defaults,true);
+  });
+  copyBtn.addEventListener('click',()=>{ navigator.clipboard.writeText(generated.textContent); });
+
+  // init
+  applyValues(loadSaved(), false);
+})();
