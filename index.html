@@ -1374,52 +1374,6 @@ body.nova-theme--dark #theme-switcher-btn i {
                 </div>
             </section>
 
-            <section class="nova-section nova-mb-xl">
-    <h2 class="nova-heading--primary">Magic Grid</h2>
-    <p>Нажимайте "Add Card" или "Remove Card", чтобы добавить или убрать карточки.</p>
-
-    <div class="nova-grid nova-grid--gap-lg">
-        <!-- Левая часть: интерактивная сетка -->
-        <div class="nova-col-12 nova-col-lg-6">
-            <div class="nova-grid-controls nova-mb-md">
-                <button id="add-card" class="nova-btn nova-btn--primary">Add Card</button>
-                <button id="remove-card" class="nova-btn nova-btn--danger">Remove Card</button>
-            </div>
-            <div id="magic-grid" class="nova-grid nova-grid--gap-md"></div>
-        </div>
-
-        <!-- Правая часть: код -->
-        <div class="nova-col-12 nova-col-lg-6">
-            <pre class="nova-playground__code"><code id="magic-grid-code" class="language-html">
-<!-- HTML -->
-&lt;div id="magic-grid"&gt;&lt;/div&gt;
-
-&lt;button id="add-card"&gt;Add Card&lt;/button&gt;
-&lt;button id="remove-card"&gt;Remove Card&lt;/button&gt;
-
-<!-- JS -->
-const magicGrid = document.getElementById('magic-grid');
-const addCardBtn = document.getElementById('add-card');
-const removeCardBtn = document.getElementById('remove-card');
-
-addCardBtn.addEventListener('click', () => {
-  const count = magicGrid.children.length + 1;
-  const newCard = document.createElement('div');
-  newCard.className = 'nova-col';
-  newCard.textContent = `Card ${count}`;
-  magicGrid.appendChild(newCard);
-});
-
-removeCardBtn.addEventListener('click', () => {
-  if (magicGrid.children.length > 0) {
-    magicGrid.removeChild(magicGrid.lastChild);
-  }
-});
-            </code></pre>
-            <button class="nova-btn nova-btn--secondary nova-copy-btn" data-target="magic-grid-code">📋 Copy Code</button>
-        </div>
-    </div>
-</section>
 
 
             <section class="nova-section">
